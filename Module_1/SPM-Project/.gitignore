@@ -1,0 +1,57 @@
+# Dependencies
+node_modules/
+dist/
+build/
+.next/
+out/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+
+# IDEs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Local Uploads (Avoid pushing user avatars to GitHub)
+Module1/backend/uploads/*
+!Module1/backend/uploads/.gitkeep
+
+# Logs
+*.log
+npm-debug.log*
+
+# AI & Planning (Hidden traces)
+.planning/
+.gemini/
+.cursor/
+.cursorrules
+.claude/
+.kiro/
+.qoder/
+.code-review-graph/
+.mcp.json
+.opencode.json
+.windsurfrules
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+QODER.md
+PRD.md
+progress.md
+progress.txt
+prompt.md
+task.md
+implementation_plan.md
+walkthrough.md
+artifact/
+brain/
+scratch/

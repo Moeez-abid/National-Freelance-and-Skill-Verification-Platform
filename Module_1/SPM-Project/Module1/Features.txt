@@ -1,0 +1,153 @@
+Feature 1 — User Registration & Authentication
+This is the most critical feature of the entire module because every other feature depends on it. Without a registered and authenticated user, nothing else works. You need to build a complete registration system that supports three roles which are freelancer, client, and administrator. When a user submits the registration form, the backend receives the data, validates every field, checks that the email is not already taken, hashes the password using bcryptjs so it is never stored as plain text, creates a new record in the users table, and automatically creates a corresponding empty record in the profiles table at the same time. The login system receives an email and password, finds the user in the database, compares the submitted password against the stored hash using bcrypt, and if they match it generates a JWT token signed with your secret key that expires in 7 days. This token is sent back to the frontend and stored so it can be attached to every future request as proof of identity. The logout simply removes the token from the frontend. The JWT middleware is a function that sits in front of every protected route and checks the token before allowing access. If the token is missing, expired, or tampered with, it returns a 401 Unauthorized error immediately.
+Database tables used: users, profiles
+API endpoints to build:
+POST   /api/auth/register
+POST   /api/auth/login
+POST   /api/auth/logout
+GET    /api/auth/me
+
+Feature 2 — Profile Management
+Every user on the platform has a profile. For freelancers this is their professional identity that clients see when evaluating them for a job. The profile management feature allows a logged in user to view their own profile, edit it, and update any field. The profile contains their headline which is a short one line description like "Full Stack Developer with 3 years experience", a detailed bio, their location, hourly rate, years of experience, and availability status which can be available, busy, or unavailable. The profile also has a profile picture and a banner image which are uploaded as files. When a client visits a freelancer's public profile they see all of this information along with their trust score, average rating, total reviews, reputation level, tier level, achievement points, and any badges they have earned from other modules. The backend must enforce that a user can only edit their own profile and cannot touch another user's profile. The profile was automatically created when the user registered so the create operation happens at registration time and the profile management feature is purely about reading and updating.
+Database tables used: profiles, users, user_badges, badges, skill_badges
+API endpoints to build:
+GET    /api/profiles/:userId
+PUT    /api/profiles/:userId
+POST   /api/profiles/:userId/upload-avatar
+POST   /api/profiles/:userId/upload-banner
+GET    /api/profiles/public/:userId
+
+Feature 3 — Skills Management
+Freelancers need to declare what skills they have so clients and the AI matching module can find them. The skills feature has two layers. The first layer is the global skills table which is a master list of all available skills on the platform like React, Python, Photoshop, and so on. The second layer is the user_skills table which is the junction between a user and a skill and stores additional information like their skill level which can be beginner, intermediate, advanced, or expert, how many years of experience they have in that skill, whether the skill is certified, whether it was verified by taking a test through Module 2, and their test score if they took the test. A freelancer can add skills to their profile by selecting from the master list and specifying their level. They can also remove skills or update their level. These skills appear as tags on the public profile. The profiles table also has a skills text array column which stores a quick searchable copy of skill names for fast filtering.
+Database tables used: skills, user_skills, skill_badges
+API endpoints to build:
+GET    /api/skills
+POST   /api/skills/user/:userId
+GET    /api/skills/user/:userId
+PUT    /api/skills/user/:userId/:skillId
+DELETE /api/skills/user/:userId/:skillId
+
+Feature 4 — Portfolio Management
+This is a trust building feature that allows freelancers to showcase their past work to potential clients. A freelancer can add multiple portfolio projects to their profile. Each portfolio project has a title, a detailed description, a link to the live project URL, a GitHub repository URL, a featured image that is uploaded as a file, a completion date, and a list of technologies used which is stored as a text array. A freelancer can mark any project as featured which means it appears at the top of their portfolio section. They can also set a sort order to control how projects are displayed. The owner can add new projects, edit existing ones, delete them, and reorder them. Clients viewing a freelancer's public profile can see all portfolio projects but cannot edit anything. The system must strictly enforce that only the owner of the portfolio can modify it.
+Database tables used: portfolio_projects, project_technologies, skills
+API endpoints to build:
+GET    /api/portfolio/:userId
+POST   /api/portfolio/:userId
+PUT    /api/portfolio/:userId/:projectId
+DELETE /api/portfolio/:userId/:projectId
+POST   /api/portfolio/:userId/:projectId/upload-image
+
+Feature 5 — Work History Tracking
+Work history allows freelancers to record their professional experience, similar to a resume or LinkedIn profile. Each work history entry contains the company name, job title, start date, end date, whether it is their current job, a description of what they did in that role, and the location of the company. The entries must be displayed on the public profile in reverse chronological order meaning the most recent job appears first. The system enforces a date constraint at the database level that prevents the end date from being earlier than the start date. If a job is marked as current then the end date is left empty. Freelancers can add as many entries as they want, edit any entry, or delete one. This feature gives clients confidence that the freelancer has real world experience beyond just their portfolio samples.
+Database tables used: work_history
+API endpoints to build:
+GET    /api/work/:userId
+POST   /api/work/:userId
+PUT    /api/work/:userId/:entryId
+DELETE /api/work/:userId/:entryId
+
+Feature 6 — Certifications Management
+Freelancers can upload external certifications they have earned from institutions, online courses, or professional bodies. Each certification has a name, the issuing authority like Coursera or Google or Microsoft, a credential ID, an issue date, an optional expiry date, a verification URL where the certificate can be independently verified, and the actual certificate file uploaded as a PDF or image. When a freelancer submits a certification it starts with a pending verification status. An administrator can then review the certification and either mark it as verified or rejected with a rejection reason. Only verified certifications are displayed prominently on the public profile with a verified badge. This feature is different from the skill badges awarded by Module 2 because these are external certifications the freelancer brings from outside the platform.
+Database tables used: certifications, verification_requests
+API endpoints to build:
+GET    /api/certifications/:userId
+POST   /api/certifications/:userId
+PUT    /api/certifications/:userId/:certId
+DELETE /api/certifications/:userId/:certId
+PATCH  /api/certifications/:certId/verify
+
+Feature 7 — Reviews & Ratings System
+After a project is completed, clients can leave a review for the freelancer they worked with. Each review consists of an overall star rating from 1 to 5, a written comment, and three sub-ratings which are communication rating, quality rating, and deadline rating each also from 1 to 5. The system strictly enforces that only clients can submit reviews and a freelancer cannot review another freelancer or themselves. The database trigger you already set up automatically recalculates the average_rating and total_reviews fields on the profiles table every time a new review is inserted or updated, so you never have to manually calculate this. All reviews are displayed publicly on the freelancer's profile. Reviews can be edited by the reviewer and the is_edited flag is set to true when this happens along with the edited_at timestamp.
+Database tables used: reviews, profiles
+API endpoints to build:
+GET    /api/reviews/:freelancerId
+POST   /api/reviews/:freelancerId
+PUT    /api/reviews/:reviewId
+DELETE /api/reviews/:reviewId
+
+Feature 8 — Identity Verification
+Users can submit a request to get their identity verified by uploading a supporting document. A verification request specifies the type of verification being requested which can be identity, email, phone, skill, or professional. The user uploads a document file and specifies the document type. The request starts with a pending status. An admin reviews it and either approves it which updates is_identity_verified to true on the users table, or rejects it with a reason. This feature is important because other modules like Module 7 Payment check whether a user is identity verified before allowing financial transactions.
+Database tables used: verification_requests, users
+API endpoints to build:
+POST   /api/verification/request
+GET    /api/verification/:userId
+PATCH  /api/verification/:requestId/review
+
+Feature 9 — Badges Display
+Module 1 does not award badges itself but it is responsible for displaying badges that other modules write to the database. Module 2 writes skill badges, Module 10 writes social impact badges, and Module 11 writes gamification badges and trust scores. Your frontend profile page must read the user_badges, skill_badges, and profiles tables and display all earned badges prominently on the public profile. This makes Module 1 the visual showcase for the entire platform's reward system.
+Database tables used: badges, user_badges, skill_badges, profiles
+API endpoints to build:
+GET    /api/badges/:userId
+
+Feature 10 — Integration APIs for Other Modules
+This is not a user-facing feature but it is mandatory for the integration group. Every other module needs to read user and profile data from Module 1. You must build clean, well-documented API endpoints that other modules can call to get user information without directly querying your database tables. These endpoints must return consistent JSON responses and be protected appropriately.
+API endpoints to build:
+GET    /api/users/:userId               → for any module needing basic user info
+GET    /api/users/:userId/profile       → for Module 4 AI matching
+GET    /api/users/:userId/skills        → for Module 3 Marketplace
+GET    /api/users/:userId/trust         → for Module 7 Payment and Module 12 Rental
+GET    /api/users/:userId/verified      → for Module 7 to check identity verification
+GET    /api/users/search?role=freelancer → for Module 3 and Module 4
+
+
+FRONTEND DETAILS:
+
+---
+
+# Feature 1 — User Registration & Authentication
+
+The frontend must provide a complete authentication system where users can register as freelancer, client, or administrator. The registration form should collect all required fields including first name, last name, email, password, confirm password, role, phone number, and country. Proper validation must be implemented on the frontend before sending data to the backend, especially for password strength and matching confirmation password. After successful registration, users should be redirected to the login page. The login screen must allow users to authenticate using email and password and include a “Remember Me” option that controls session duration. The JWT token received from the backend must be stored securely and attached to all protected API requests. The frontend should also include forgot password and reset password screens, where users can request a reset link and set a new password using a token. Email verification and phone verification are not yet implemented and should only be represented as future UI placeholders, as these are user-level processes and not handled by admin.
+
+---
+
+# Feature 2 — Profile Management
+
+The frontend must include a full profile management system where each user can view and edit their professional profile. The profile page should include fields such as headline, bio, location, hourly rate, years of experience, availability status, profile picture, and banner image upload. Users must only be able to edit their own profile, while clients should be able to view freelancer profiles in a public view. The public profile should display additional computed data such as trust score, average rating, total reviews, reputation level, tier level, achievement points, and badges. The profile UI must also integrate data from other modules including skills, portfolio, work history, certifications, and reviews in a structured and visually clear format.
+
+---
+
+# Feature 3 — Skills Management
+
+The frontend must allow freelancers to manage their skills from a predefined global skill list. Users should be able to add skills, assign skill levels (beginner, intermediate, advanced, expert), update existing skills, or remove them. Skills should be displayed as tags on the public profile for better visibility. The UI must support a clean skill selection interface with proper search or dropdown selection from the master skills list. These skills will also be used in AI matching and marketplace filtering, so frontend should ensure accurate display and updates.
+
+---
+
+# Feature 4 — Portfolio Management
+
+The frontend must provide a portfolio section where freelancers can showcase their work projects. Each project should include title, description, live URL, GitHub repository link, featured image upload, completion date, and technologies used. Users must be able to create, edit, and delete portfolio projects. The interface should also allow freelancers to mark projects as featured, which will display them at the top of the portfolio section. Additionally, users should be able to control project ordering (sort order). On the public profile, all portfolio projects must be displayed in a visually structured grid or card layout, with featured projects highlighted.
+
+---
+
+# Feature 5 — Work History Tracking
+
+The frontend must display a resume-style work history section similar to LinkedIn. Users should be able to add multiple work entries including company name, job title, start date, end date, current job status, description, and location. The UI should ensure entries are displayed in reverse chronological order, with the most recent job appearing first. Users must be able to add, edit, and delete entries easily. If a job is marked as current, the end date field should be disabled or optional in the UI. This section should be clearly visible on the public profile to build freelancer credibility.
+
+---
+
+# Feature 6 — Certifications Management
+
+The frontend must allow freelancers to upload external certifications such as Coursera, Google, Microsoft, or institutional certificates. Each certification should include name, issuing authority, credential ID, issue date, expiry date (optional), verification URL, and file upload (PDF/image). When a certification is submitted, its status should initially appear as pending. Users must be able to view status updates such as verified or rejected, along with admin feedback if rejected. Only verified certifications should be highlighted on the public profile with a verified badge. The UI should clearly differentiate between pending, verified, and rejected certifications.
+
+---
+
+# Feature 7 — Reviews & Ratings System
+
+The frontend must allow clients to submit reviews for freelancers after project completion. Each review should include a star rating (1–5), a written comment, and sub-ratings for communication, quality, and deadline adherence. The UI should enforce that users cannot review themselves or other freelancers outside valid contracts. Reviews must be displayed publicly on freelancer profiles in a clean list format sorted by latest first. Users should also be able to edit their own reviews, and edited reviews must be visually marked as edited. Review submission forms should be simple and intuitive with proper validation.
+
+---
+
+# Feature 8 — Identity Verification
+
+The frontend must include a verification section where users can submit identity verification requests by uploading a supporting document. Users must also select the verification type and document type before submission. The UI should clearly show the request status as pending, approved, or rejected, along with admin feedback in case of rejection. Identity verification is required for financial or sensitive operations in other modules. Email and phone verification are not handled by admin and are not part of this system yet, so frontend should not include admin-controlled verification for them.
+
+---
+
+# Feature 9 — Badges Display
+
+The frontend must display all badges earned by users from different modules, including skill badges, gamification badges, and social impact badges. These badges are not created in Module 1 but are fetched and displayed from other modules. The UI should present badges in a structured format grouped by category and visually highlighted on the public profile. Each badge should include an icon, name, and description tooltip. Badges should be prominently visible to increase freelancer credibility.
+
+---
+
+# Feature 10 — Integration APIs for Other Modules
+
+The frontend must rely on integration APIs provided by Module 1 to fetch user-related data across the platform. These include basic user information, profile data, skills, trust score, verification status, and search functionality. The frontend should ensure consistent API usage across all modules and handle responses in a unified format. These APIs will be used by other modules such as AI matching, marketplace, and payment systems, so frontend implementation must ensure reliability, proper error handling, and reusable service functions for API calls.

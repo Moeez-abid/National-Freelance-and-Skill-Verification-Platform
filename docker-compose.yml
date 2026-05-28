@@ -1,0 +1,160 @@
+version: '3.8'
+
+services:
+  # ==========================================
+  # THE SINGLE SHARED DATABASE
+  # ==========================================
+  postgres:
+    image: postgres:15-alpine
+    container_name: unified_app_db
+    restart: always
+    environment:
+      POSTGRES_DB: unified_app_db
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      # Master SQL files run on first boot
+      - ./init-db:/docker-entrypoint-initdb.d
+      # --- ADDED FOR MODULE 4 ---
+      # This ensures Module 4's schema and seed data run automatically on first boot
+      - ./Module_4/SPM_Centralized_Db.sql:/docker-entrypoint-initdb.d/04-module4-schema.sql
+      - ./Module_4/SPM_Seed_Data.sql:/docker-entrypoint-initdb.d/05-module4-seed.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d unified_app_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # ==========================================
+  # MODULE 1 BACKEND (Raw PG)
+  # ==========================================
+  module1-backend:
+    build: ./Module_1/SPM-Project/Module1/backend
+    container_name: module1-backend
+    restart: always
+    ports:
+      - "5001:5001"
+    environment:
+      - PORT=5001
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_NAME=unified_app_db
+      - DB_USER=admin
+      - DB_PASSWORD=admin123
+      - JWT_SECRET=your_super_secret_jwt_key_here
+      - JWT_EXPIRES_IN=7d
+      - EMAIL_HOST=smtp.gmail.com
+      - EMAIL_PORT=587
+      - EMAIL_USER=spmprojectb@gmail.com
+      - EMAIL_PASS=rgul ahdh caze hizj
+    volumes:
+      - ./Module_1/SPM-Project/Module1/backend/uploads:/app/uploads
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  # ==========================================
+  # MODULE 1 FRONTEND (React)
+  # ==========================================
+  module1-frontend:
+    build: ./Module_1/SPM-Project/Module1/frontend
+    container_name: module1-frontend
+    restart: always
+    ports:
+      - "3000:80"
+    depends_on:
+      - module1-backend
+
+  # ==========================================
+  # MODULE 2 BACKEND (Prisma)
+  # ==========================================
+  module2-backend:
+    build: ./Module_2/Exam_conduction_module/server
+    container_name: module2-backend
+    restart: always
+    ports:
+      - "5002:5000"
+    environment:
+      - JWT_SECRET=your_super_secret_jwt_key_here
+      - JWT_EXPIRES_IN=7d
+      - DATABASE_URL=postgresql://admin:admin123@postgres:5432/unified_app_db?schema=public
+      - PORT=5000
+    env_file:
+      - ./Module_2/Exam_conduction_module/server/.env
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  # ==========================================
+  # MODULE 2 FRONTEND (Vite/React)
+  # ==========================================
+  module2-frontend:
+    build: ./Module_2/Exam_conduction_module/client
+    container_name: module2-frontend
+    restart: always
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_API_URL=http://localhost:5002
+    depends_on:
+      - module2-backend
+
+  # ==========================================
+  # MODULE 3 BACKEND (NFASVP)
+  # ==========================================
+  module3-backend:
+    build: ./Module_3/SPM-module-3/nfasvp-module3/backend
+    container_name: module3-backend
+    restart: always
+    ports:
+      - "3003:3003"
+    env_file:
+      - ./Module_3/SPM-module-3/nfasvp-module3/backend/.env
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_NAME=unified_app_db
+      - DB_USER=admin
+      - DB_PASSWORD=admin123
+      - JWT_SECRET=your_super_secret_jwt_key_here
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  # ==========================================
+  # MODULE 3 FRONTEND (NFASVP)
+  # ==========================================
+  module3-frontend:
+    build: ./Module_3/SPM-module-3/nfasvp-module3/frontend
+    container_name: module3-frontend
+    restart: always
+    ports:
+      - "5003:5003" 
+    env_file:
+      - ./Module_3/SPM-module-3/nfasvp-module3/frontend/.env
+    depends_on:
+      - module3-backend
+
+  # ==========================================
+  # MODULE 4 BACKEND
+  # ==========================================
+  module4-backend:
+    build: ./Module_4  # <--- UPDATE THIS PATH to point to the folder containing Module 4's Dockerfile
+    container_name: module4-backend
+    restart: always
+    ports:
+      - "5004:5004"
+    environment:
+      # Overriding their DATABASE_URL to point to our unified postgres container
+      - DATABASE_URL=postgres://admin:admin123@postgres:5432/unified_app_db
+      - PORT=5004
+      - JWT_SECRET=your_super_secret_jwt_key_here
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  postgres-data:

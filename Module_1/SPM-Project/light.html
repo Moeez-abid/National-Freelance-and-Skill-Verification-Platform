@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nexus Professional | UI Showcase &amp; Style Guide</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed-variant": "#264778",
+                    "primary-fixed-dim": "#a9c7ff",
+                    "on-tertiary-fixed-variant": "#005049",
+                    "inverse-surface": "#263143",
+                    "tertiary": "#001b18",
+                    "primary": "#001736",
+                    "on-secondary": "#ffffff",
+                    "secondary": "#515f74",
+                    "outline-variant": "#c4c6d0",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed-variant": "#3a485b",
+                    "on-primary-container": "#7594ca",
+                    "tertiary-fixed-dim": "#6bd8cb",
+                    "inverse-primary": "#a9c7ff",
+                    "secondary-container": "#d5e3fc",
+                    "on-surface-variant": "#43474f",
+                    "on-background": "#111c2d",
+                    "tertiary-container": "#00322d",
+                    "on-primary": "#ffffff",
+                    "surface": "#f9f9ff",
+                    "surface-dim": "#cfdaf2",
+                    "secondary-fixed": "#d5e3fc",
+                    "on-primary-fixed": "#001b3d",
+                    "surface-bright": "#f9f9ff",
+                    "surface-container-high": "#dee8ff",
+                    "on-error": "#ffffff",
+                    "primary-fixed": "#d6e3ff",
+                    "primary-container": "#002b5b",
+                    "on-tertiary": "#ffffff",
+                    "surface-variant": "#d8e3fb",
+                    "on-surface": "#111c2d",
+                    "background": "#f9f9ff",
+                    "surface-tint": "#405f91",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-on-surface": "#ecf1ff",
+                    "error": "#ba1a1a",
+                    "secondary-fixed-dim": "#b9c7df",
+                    "on-error-container": "#93000a",
+                    "tertiary-fixed": "#89f5e7",
+                    "surface-container": "#e7eeff",
+                    "surface-container-highest": "#d8e3fb",
+                    "surface-container-low": "#f0f3ff",
+                    "outline": "#747780",
+                    "on-secondary-container": "#57657a",
+                    "on-tertiary-container": "#2ca397",
+                    "on-secondary-fixed": "#0d1c2e",
+                    "on-tertiary-fixed": "#00201d"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4 { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface flex flex-col min-h-screen">
+<!-- TopNavBar Component -->
+<header class="h-16 flex justify-between items-center w-full px-6 sticky top-0 z-50 backdrop-blur-md bg-opacity-90 bg-primary border-b border-primary-container/20">
+<div class="flex items-center gap-10">
+<div class="flex items-center gap-4 w-64">
+<div class="w-8 h-8 bg-tertiary-fixed rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-xl font-bold">bolt</span>
+</div>
+<div>
+<h1 class="text-sm font-black text-white uppercase tracking-tighter leading-none">NEXUS PRO</h1>
+<p class="text-[9px] font-bold tracking-widest uppercase text-tertiary-fixed-dim leading-none mt-1">Professional</p>
+</div>
+</div>
+<nav class="hidden xl:flex items-center gap-8">
+<a class="text-[11px] font-black uppercase tracking-widest text-white border-b-2 border-tertiary-fixed-dim pb-1" href="#">Overview</a>
+<a class="text-[11px] font-black uppercase tracking-widest text-slate-300 border-b-2 border-transparent pb-1 hover:text-white transition-colors" href="#">Gig Marketplace</a>
+<a class="text-[11px] font-black uppercase tracking-widest text-slate-300 hover:text-white transition-colors" href="#">Network</a>
+<a class="text-[11px] font-black uppercase tracking-widest text-slate-300 hover:text-white transition-colors" href="#">Insights</a>
+</nav>
+</div>
+<div class="flex items-center gap-6 ml-auto">
+<div class="flex items-center gap-2">
+<button class="p-2 text-slate-300 hover:text-white hover:bg-white/10 rounded-full transition-all relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="p-2 text-slate-300 hover:text-white hover:bg-white/10 rounded-full transition-all">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+</div>
+<div class="flex items-center gap-3 pl-4 border-l border-white/10">
+<div class="text-right hidden sm:block">
+<p class="text-[10px] font-bold text-white uppercase tracking-wider">A. Sterling</p>
+<p class="text-[9px] font-medium text-slate-400 uppercase">Enterprise Admin</p>
+</div>
+<img alt="Profile" class="w-9 h-9 rounded-lg border border-white/20 object-cover" data-alt="Professional user profile headshot, confident expression, soft corporate lighting, neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtwC6ZvX7GXW7EW5hevkPqMO6D95liKdTdhwlvx3v18pOpo93ZHhS0xAbYzYA-PTeYjjEsA7TDRm0W9Hvnl64vqVk00xVYJlN0kqCyZEKSBB3pdk4EmpY2urQH0TEc61HHruthRJuRhlJaGhCx_guVJzedsWuyynwDwFGILeeeof4ePBzOSGDutowFDU2i4L_9mmWN4uHBhs6CB_oUJnbCgJC-m3F_MoN5PWrUB_My5QgGSLuatV73mQC_Z78bVxt_igpzDaGCc48"/>
+</div>
+</div>
+</header>
+<div class="flex flex-1">
+<!-- SideNavBar Component -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] flex flex-col p-4 bg-[#f0f3ff] dark:bg-[#001736] bg-gradient-to-b from-[#f0f3ff] to-[#f9f9ff] dark:from-[#001736] dark:to-[#002b5b] w-64 z-40">
+<nav class="flex-grow space-y-1">
+<div class="px-3 mb-4">
+<p class="text-[10px] font-black tracking-widest uppercase text-slate-400">Navigation</p>
+</div>
+<a class="flex items-center gap-3 px-3 py-2.5 bg-[#ffffff] dark:bg-[#002b5b] text-[#001b18] dark:text-[#89f5e7] rounded-lg shadow-sm font-semibold transition-all duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[11px] font-bold tracking-wider uppercase">Overview</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:text-[#001736] dark:hover:text-white hover:bg-[#dee8ff] dark:hover:bg-[#001b18] transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">folder_special</span>
+<span class="text-[11px] font-bold tracking-wider uppercase">Portfolio</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:text-[#001736] dark:hover:text-white hover:bg-[#dee8ff] dark:hover:bg-[#001b18] transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">hub</span>
+<span class="text-[11px] font-bold tracking-wider uppercase">Network</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:text-[#001736] dark:hover:text-white hover:bg-[#dee8ff] dark:hover:bg-[#001b18] transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">query_stats</span>
+<span class="text-[11px] font-bold tracking-wider uppercase">Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:text-[#001736] dark:hover:text-white hover:bg-[#dee8ff] dark:hover:bg-[#001b18] transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">article</span>
+<span class="text-[11px] font-bold tracking-wider uppercase">Documents</span>
+</a>
+</nav>
+<div class="mt-auto space-y-4">
+<button class="w-full py-3 bg-primary text-on-primary rounded-lg font-bold text-[11px] uppercase tracking-widest shadow-sm hover:opacity-90 active:scale-[0.98] transition-all">
+                    Create Project
+                </button>
+<div class="pt-4 border-t border-outline-variant/10 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:text-[#001736] dark:hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[11px] font-bold tracking-wider uppercase">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:text-[#001736] dark:hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">contact_support</span>
+<span class="text-[11px] font-bold tracking-wider uppercase">Support</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 w-full flex flex-col min-h-screen">
+<!-- Canvas -->
+<div class="p-8 lg:p-12 space-y-20 max-w-7xl">
+<!-- Section 1: Hero/Dashboard Preview -->
+<section class="space-y-8" id="overview">
+<div>
+<span class="text-[0.6875rem] font-bold tracking-[0.05em] uppercase text-on-tertiary-container mb-2 block">System Analytics</span>
+<h2 class="text-3xl font-extrabold tracking-tight text-primary">Overview Dashboard</h2>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Bento Grid Layout -->
+<div class="lg:col-span-2 bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-outline-variant/10 relative overflow-hidden h-full">
+<div class="flex justify-between items-start mb-8">
+<div>
+<h3 class="text-lg font-bold text-primary">Portfolio Performance</h3>
+<p class="text-sm text-slate-500">Asset growth over the last quarter</p>
+</div>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-tertiary-fixed text-on-tertiary-fixed text-[10px] font-bold rounded-full uppercase tracking-wider">+12.5%</span>
+</div>
+</div>
+<!-- Mock Chart Representation -->
+<div class="h-48 flex items-end gap-2 px-4">
+<div class="flex-1 bg-surface-container h-[40%] rounded-t-sm"></div>
+<div class="flex-1 bg-surface-container h-[60%] rounded-t-sm"></div>
+<div class="flex-1 bg-surface-container h-[45%] rounded-t-sm"></div>
+<div class="flex-1 bg-surface-container h-[80%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary h-[95%] rounded-t-sm"></div>
+<div class="flex-1 bg-tertiary-fixed-dim h-[70%] rounded-t-sm"></div>
+<div class="flex-1 bg-surface-container h-[55%] rounded-t-sm"></div>
+</div>
+</div>
+<div class="space-y-6">
+<div class="bg-primary text-white p-6 rounded-xl relative overflow-hidden">
+<div class="relative z-10">
+<span class="text-[10px] font-bold uppercase tracking-widest opacity-70">Total Revenue</span>
+<p class="text-3xl font-black mt-1">$412,800.00</p>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-10">
+<span class="material-symbols-outlined text-8xl" style="font-variation-settings: 'FILL' 1;">payments</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-xl">
+<span class="text-[10px] font-bold uppercase tracking-widest text-slate-500">Network Reach</span>
+<div class="flex items-center gap-4 mt-2">
+<div class="flex -space-x-3">
+<img alt="user" class="w-10 h-10 rounded-full border-2 border-surface" data-alt="Portrait of woman in professional attire, soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGRUTvnIsqwTJ89zKXk-E2znlxz26r64bxHCzfUdnxrNvbz8rRTkSlDb99_cnR2lAtBAh-8oSzyq-F9PdCUPVKPKOQ06NzRunWhq-YhQyeQDY262c5uT32DvZ00vlurImYJHd13cdJa4PLjOj2nUFbDRrQyIbDPluNjzQxjiLqGJ3ToNMXIeL1sYo8kon32C6VLUp-l6NnXQGRkWb23obn1oed6YsY6C_5h997Kk8RLJSX2vtukdfp8fXr3aNXgOJ4Rq_NcfCQ_ew"/>
+<img alt="user" class="w-10 h-10 rounded-full border-2 border-surface" data-alt="Portrait of man smiling in business setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3DnGq5N3atp8tWp2yG1W7T-4KyAwD1NLgmxj6tMV7RwRFssgTrb3807GJmVnIpNRF_QSs_OVkCm5QVhU5G0J8cL88oenD__Qd1JT9YYldpiAlLvlnvLg-mHQ5BTFqZYW_iy-X53j1IhTl8876S9GNKUhnj3cl2U9TNx42Ee5Tn0Qn0qdmUgObLYzHX-PDgqWf-mz9CAlc9httFJeCoJcrkTc0njJPjAvFsMoMyG-rlgKQChGrAEPV8wCAnGHZJnYIewJVUsilVvo"/>
+<img alt="user" class="w-10 h-10 rounded-full border-2 border-surface" data-alt="Portrait of male professional, neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrTHwoX_akFEOL98i1I7xWzeaJG2S0CaIUGbYzO05nB5lH4f5VQdccX4b-Skks43UauYZQdjP6TURM_p2UJRmYpseSJPXYjWzn_02MZ-BfSPhqt5pkJir90-SgJoq_SbBkDsD1ut_5UkCQDv5vzLq1p2LxF3rp2pgAHeWdIEJFyk8_kdYJB87hFcfmt_7zauZL4DGc_RyzJuKnpQSiN13G1WBSgYU8Jl5bEzmshIRRSCM__Vyoig_0l21R1nPUxBEabC25mSByiJc"/>
+<div class="w-10 h-10 rounded-full border-2 border-surface bg-surface-container-high flex items-center justify-center text-[10px] font-bold">+2k</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Component Library -->
+<section class="space-y-12" id="library">
+<div class="border-l-4 border-tertiary-fixed pl-6">
+<h2 class="text-2xl font-extrabold text-primary tracking-tight">Component Library</h2>
+<p class="text-slate-500 mt-1">Foundational atoms and molecules of the Nexus ecosystem.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+<!-- Buttons & Inputs -->
+<div class="space-y-10">
+<div class="space-y-4">
+<h4 class="text-xs font-black uppercase tracking-widest text-on-surface-variant">Interactions</h4>
+<div class="flex flex-wrap gap-4">
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded text-sm font-bold shadow-sm hover:brightness-110 active:scale-95 transition-all">Primary Button</button>
+<button class="bg-secondary-container text-on-secondary-container px-6 py-2.5 rounded text-sm font-bold hover:bg-surface-container-high active:scale-95 transition-all">Secondary Button</button>
+<button class="text-primary px-6 py-2.5 rounded text-sm font-bold hover:bg-surface-container-high active:scale-95 transition-all">Ghost Button</button>
+</div>
+</div>
+<div class="space-y-4">
+<h4 class="text-xs font-black uppercase tracking-widest text-on-surface-variant">Form Inputs</h4>
+<div class="space-y-4 max-w-sm">
+<div>
+<label class="block text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-1.5">Full Name</label>
+<input class="w-full bg-surface-container-lowest border-0 ring-1 ring-outline-variant/15 rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-tertiary outline-none transition-all" type="text" value="Alexander Sterling"/>
+</div>
+<div class="flex items-center gap-3">
+<input checked="" class="w-5 h-5 rounded border-outline-variant/20 text-primary focus:ring-tertiary" type="checkbox"/>
+<span class="text-sm text-on-surface-variant font-medium">Enable real-time editorial notifications</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Profile Card Example -->
+<div class="space-y-4">
+<h4 class="text-xs font-black uppercase tracking-widest text-on-surface-variant">Expert Profile Card</h4>
+<div class="bg-surface-container-low p-1 rounded-xl shadow-sm">
+<div class="bg-surface-container-lowest p-6 rounded-lg relative overflow-hidden">
+<div class="flex items-start gap-4">
+<img alt="Expert" class="w-20 h-20 rounded-lg object-cover grayscale-[20%] contrast-125" data-alt="Professional male in executive office setting, soft bokeh, cinematic lighting, corporate authority" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkzdT-2QkPuDZ5Q2S7dPXaG3reYzNulaO6aDfKg27DhINnfXzGrWVEDBwRnKvyL7kY8bpuf0ZSHYMGZNEefW0wN-578ZKMXzGCON9ta2N7XbXyonBBuoE3faekvjUb_KA50CVNKH3AhGU6auaW0QrU6_W-wNM1rs71NmNtFU9Pf4_I1JikvIqPfwSnreGPf7n-zpxG5qxcLfw7FnHn_50O3NcqKs5CBRVFtSlPYU-eIoGU1STAUpWKUhVqqbtXVPJeKu_9zbSYSt8"/>
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<h3 class="font-bold text-lg text-primary">Marcus Thorne</h3>
+<span class="material-symbols-outlined text-tertiary-fixed-dim text-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<p class="text-xs font-bold text-on-tertiary-container uppercase tracking-wide">Senior Financial Architect</p>
+<p class="text-sm text-slate-500 line-clamp-2 leading-relaxed mt-2">Specializing in multi-tier corporate structuring and editorial oversight for Tier 1 institutional assets.</p>
+</div>
+</div>
+<div class="mt-6 pt-6 border-t border-outline-variant/10 flex justify-between items-center">
+<div class="flex gap-4">
+<div>
+<p class="text-[10px] font-bold text-slate-400 uppercase">Projects</p>
+<p class="font-black text-primary">128</p>
+</div>
+<div>
+<p class="text-[10px] font-bold text-slate-400 uppercase">Rating</p>
+<p class="font-black text-primary">4.9/5</p>
+</div>
+</div>
+<button class="bg-[#001b18] text-[#89f5e7] text-[10px] font-black uppercase px-4 py-2 rounded tracking-widest hover:opacity-90 transition-all">Connect</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Design Tokens & Palette -->
+<section class="space-y-12" id="tokens">
+<div class="border-l-4 border-primary pl-6">
+<h2 class="text-2xl font-extrabold text-primary tracking-tight">Design Tokens &amp; Palette</h2>
+<p class="text-slate-500 mt-1">The molecular core of our visual identity.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+<!-- Palette -->
+<div class="space-y-6">
+<h4 class="text-xs font-black uppercase tracking-widest text-on-surface-variant">Color Swatches</h4>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+<div class="space-y-2">
+<div class="h-20 w-full bg-[#001736] rounded-lg shadow-inner"></div>
+<p class="text-[10px] font-bold uppercase text-primary">Deep Midnight</p>
+<p class="text-[10px] text-slate-400">#001736</p>
+</div>
+<div class="space-y-2">
+<div class="h-20 w-full bg-[#89f5e7] rounded-lg shadow-inner"></div>
+<p class="text-[10px] font-bold uppercase text-primary">Teal Accent</p>
+<p class="text-[10px] text-slate-400">#89F5E7</p>
+</div>
+<div class="space-y-2">
+<div class="h-20 w-full bg-[#f0f3ff] rounded-lg shadow-inner border border-outline-variant/10"></div>
+<p class="text-[10px] font-bold uppercase text-primary">Soft Tonal Blue</p>
+<p class="text-[10px] text-slate-400">#F0F3FF</p>
+</div>
+<div class="space-y-2">
+<div class="h-20 w-full bg-[#001b18] rounded-lg shadow-inner"></div>
+<p class="text-[10px] font-bold uppercase text-primary">Obsidian Green</p>
+<p class="text-[10px] text-slate-400">#001B18</p>
+</div>
+</div>
+</div>
+<!-- Typography -->
+<div class="space-y-6">
+<h4 class="text-xs font-black uppercase tracking-widest text-on-surface-variant">Typography Scale</h4>
+<div class="space-y-4">
+<div class="flex items-baseline gap-4">
+<span class="text-4xl font-black tracking-tight text-primary font-headline">Aa</span>
+<div>
+<p class="text-sm font-bold font-headline">Manrope (Display/Headline)</p>
+<p class="text-xs text-slate-500">Geometric, Warm, High-Authority</p>
+</div>
+</div>
+<div class="flex items-baseline gap-4 pt-4 border-t border-outline-variant/10">
+<span class="text-2xl font-normal text-on-surface font-body">Aa</span>
+<div>
+<p class="text-sm font-medium font-body">Inter (Body/Utility)</p>
+<p class="text-xs text-slate-500">Neutral, Hyper-Legible, Technical</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4: Design Rationale -->
+<section class="bg-surface-container p-8 lg:p-12 rounded-2xl relative overflow-hidden" id="rationale">
+<div class="absolute right-0 top-0 w-1/3 h-full opacity-10 pointer-events-none">
+<div class="w-full h-full bg-gradient-to-l from-primary to-transparent"></div>
+</div>
+<div class="max-w-2xl relative z-10">
+<span class="text-[0.6875rem] font-bold tracking-[0.05em] uppercase text-primary mb-4 block">The Philosophy</span>
+<h2 class="text-4xl font-extrabold tracking-tight text-primary leading-tight">Editorial Engine: Design Rationale</h2>
+<div class="mt-8 space-y-6 text-on-surface-variant leading-relaxed">
+<p>
+                                Nexus Professional rejects the cluttered, grid-heavy aesthetic of traditional job boards. Instead, it adopts the <strong class="text-primary">Editorial Engine</strong> approach—a fusion of high-end financial journalism layouts and precision engineering interfaces.
+                            </p>
+<p>
+                                Our design language utilizes intentional asymmetry: heavy, authoritative typography balanced against vast, airy "breathing zones." By prioritizing tonal layering over hard borders, we create a UI that feels curated and expansive, reflecting the expertise of our professional user base.
+                            </p>
+<ul class="space-y-3 pt-4">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary-fixed-dim">check_circle</span>
+<span class="text-sm font-semibold">Authoritative Scale Shifts (-0.02em tracking)</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary-fixed-dim">check_circle</span>
+<span class="text-sm font-semibold">Tonal Depth Hierarchy (No 1px Dividers)</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary-fixed-dim">check_circle</span>
+<span class="text-sm font-semibold">Digital-First Innovation Accents</span>
+</li>
+</ul>
+</div>
+</div>
+</section>
+</div>
+<footer class="mt-auto px-8 py-10 bg-surface-container-low text-center">
+<p class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em]">Nexus Professional © 2024 • Editorial Engine Design Protocol v1.0</p>
+</footer>
+</main>
+</div>
+</body></html>

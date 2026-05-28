@@ -1,0 +1,10 @@
+{
+  "name": "nfasvp-module3",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "node scripts/dev.js",
+    "test": "npm.cmd test --prefix backend",
+    "build": "npm.cmd run build --prefix frontend"
+  }
+}
