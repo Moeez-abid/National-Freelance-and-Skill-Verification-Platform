@@ -1,0 +1,50 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: social-impact-postgres
+    restart: unless-stopped
+    # Host 5433 avoids Mac Homebrew Postgres on localhost:5432 (same port = seed hits wrong server).
+    ports:
+      - '5433:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: social_impact
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: social-impact-backend
+    restart: unless-stopped
+    ports:
+      - '3010:3010'
+    environment:
+      DATABASE_URL: 'postgresql://postgres:postgres@postgres:5432/social_impact'
+      DATABASE_SYNC: 'true'
+      JWT_SECRET: change-this-in-production-super-secret
+      JWT_EXPIRES_IN: 7d
+      PORT: 3010
+      # Must match the URL you open in the browser.
+      FRONTEND_URL: ${FRONTEND_URL:-http://localhost:5010}
+    depends_on:
+      - postgres
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: social-impact-frontend
+    restart: unless-stopped
+    ports:
+      - '5010:5010'
+    environment:
+      PORT: 5010
+      NEXT_PUBLIC_API_URL: http://localhost:3010/api
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
