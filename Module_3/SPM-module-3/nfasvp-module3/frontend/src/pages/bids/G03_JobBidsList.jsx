@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import { C, Navbar, Sidebar, Btn, MilestoneBadge } from "./fbs_shared";
+import { getC, Navbar, Sidebar, Btn, MilestoneBadge } from "./fbs_shared";
 import { useJobBids } from "../../hooks/useBids";
 import { useJob } from "../../hooks/useJobs";
 
 export default function JobBidsList({ onNavigate, params, role }) {
+  const C = getC();
   const jobId = params?.jobId;
   const { job } = useJob(jobId);
   const { bids, loading, error, refresh } = useJobBids(jobId);

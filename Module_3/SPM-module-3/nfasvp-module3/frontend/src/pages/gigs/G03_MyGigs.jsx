@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { C, Navbar, StickyNote, Stars, Btn } from "./shared";
+import { getC, Navbar, StickyNote, Stars, Btn } from "./shared";
 import { useMyGigs } from "../../hooks/useGigs";
 
 // ─── MINI GIG CARD (FOR DASHBOARD) ──────────────────────────────────────────
 function MyGigCard({ gig, onNavigate }) {
+  const C = getC();
   const [hovered, setHovered] = useState(false);
   
   const basicTier = gig.pricing_tiers?.[0] || {};
@@ -51,6 +52,7 @@ function MyGigCard({ gig, onNavigate }) {
 // G03_MyGigs
 // ══════════════════════════════════════════════════════════════════════════════
 export default function MyGigs({ onNavigate, role }) {
+  const C = getC();
   const { gigs, loading, error, refresh } = useMyGigs();
 
   return (

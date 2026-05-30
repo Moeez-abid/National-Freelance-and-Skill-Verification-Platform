@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { C, Navbar, Btn } from "../gigs/shared";
+import { getC, Navbar, Btn } from "../gigs/shared";
 import { useMyJobs } from "../../hooks/useJobs";
 
 export default function MyJobs({ onNavigate, role }) {
+  const C = getC();
   const [filter, setFilter] = useState("all");
   const { jobs, loading, error } = useMyJobs();
 

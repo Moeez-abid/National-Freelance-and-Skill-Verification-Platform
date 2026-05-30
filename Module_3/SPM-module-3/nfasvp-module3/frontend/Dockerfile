@@ -4,7 +4,7 @@ WORKDIR /app
 
 # Install dependencies first for better caching
 COPY package*.json ./
-RUN npm install
+RUN npm ci --include=dev
 
 # Copy source code
 COPY . .
@@ -12,4 +12,4 @@ COPY . .
 EXPOSE 5003
 
 # Run vite with host flag to allow external access
-CMD ["npm", "run", "dev", "--", "--host"]
+CMD ["npm", "run", "dev", "--", "--host", "--port", "5003"]

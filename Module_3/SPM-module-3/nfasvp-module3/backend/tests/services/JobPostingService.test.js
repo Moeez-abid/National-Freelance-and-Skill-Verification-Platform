@@ -59,4 +59,26 @@ describe('JobPostingService', () => {
       await expect(jobService.deleteJob('job1', 'client1')).rejects.toThrow(ConflictError);
     });
   });
+
+  describe('listJobs', () => {
+    it('7. listJobs — forwards keyword search and filters to repository', async () => {
+      jobRepo.getAllJobs.mockResolvedValue({ data: [], count: 0 });
+
+      await jobService.listJobs({
+        q: 'react dashboard',
+        status: 'open',
+        project_type: 'fixed_price',
+        budget_min: '500',
+      }, { page: 2, limit: 5 });
+
+      expect(jobRepo.getAllJobs).toHaveBeenCalledWith(expect.objectContaining({
+        q: 'react dashboard',
+        status: 'open',
+        project_type: 'fixed_price',
+        budget_min: '500',
+        page: 2,
+        limit: 5,
+      }));
+    });
+  });
 });

@@ -123,6 +123,7 @@ async function getAllJobs(filters = {}) {
   try {
     const {
       status       = 'open',
+      q,
       category_id,
       project_type,
       budget_min,
@@ -135,6 +136,10 @@ async function getAllJobs(filters = {}) {
     const params = [status];
     const conditions = ['j.status = $1'];
 
+    if (q) {
+      params.push(`%${q}%`, `%${q}%`);
+      conditions.push(`(j.title ILIKE $${params.length - 1} OR j.description ILIKE $${params.length})`);
+    }
     if (category_id)  { params.push(category_id);  conditions.push(`j.category_id  = $${params.length}`); }
     if (project_type) { params.push(project_type); conditions.push(`j.project_type = $${params.length}`); }
     if (budget_min)   { params.push(budget_min);   conditions.push(`j.budget_max  >= $${params.length}`); }

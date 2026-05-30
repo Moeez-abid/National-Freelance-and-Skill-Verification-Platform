@@ -31,6 +31,12 @@ export default function GigDetail({ onNavigate, params, role }) {
 
   const { gig, loading, error } = useGig(params?.id);
   const realTiers = gig?.pricing_tiers || [];
+  const skillLabels = (gig?.required_skills?.length ? gig.required_skills : ["Service"])
+    .map((skill) => {
+      if (typeof skill === "string") return skill;
+      return skill?.tag?.name || skill?.name || skill?.tag || "Service";
+    })
+    .filter(Boolean);
 
   useEffect(() => {
     if (realTiers.length > 0) {
@@ -47,9 +53,11 @@ export default function GigDetail({ onNavigate, params, role }) {
   const tier = activeTier ? {
     price: `PKR ${activeTier.price}`,
     delivery: `${activeTier.delivery_days} days`,
-    revisions: "Included",
-    desc: activeTier.desc || "No package description.",
-    deliverables: activeTier.deliverables || [activeTier.desc || "Standard deliverable"]
+    revisions: activeTier.revisions || "Included",
+    desc: activeTier.description || activeTier.desc || "No package description.",
+    deliverables: Array.isArray(activeTier.deliverables)
+      ? activeTier.deliverables
+      : [activeTier.description || activeTier.desc || "Standard deliverable"],
   } : TIERS_FALLBACK[pricing];
 
   return (
@@ -122,7 +130,7 @@ export default function GigDetail({ onNavigate, params, role }) {
                       <div className="space-y-4">
                          <h3 className="text-sm font-black text-primary uppercase tracking-widest">Expertise Deployed</h3>
                          <div className="flex gap-3 flex-wrap">
-                            {(gig.required_skills || ["Service"]).map(s => (
+                            {skillLabels.map(s => (
                               <span key={s} className="bg-surface-container text-primary border border-outline-variant/10 px-5 py-2 rounded-xl text-xs font-black uppercase tracking-widest">
                                 {s}
                               </span>

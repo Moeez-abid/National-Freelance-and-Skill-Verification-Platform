@@ -198,8 +198,8 @@ export default function BrowseGigs({ onNavigate, role }) {
               <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">Sort:</span>
               <select value={sort} onChange={e => setSort(e.target.value)} className="bg-transparent border-0 text-[10px] font-black uppercase tracking-widest text-primary focus:ring-0 outline-none cursor-pointer">
                 <option value="newest">Newest First</option>
-                <option value="price_low">Lowest Price</option>
-                <option value="rating">Top Rated</option>
+                <option value="price_asc">Lowest Price</option>
+                <option value="rating_desc">Top Rated</option>
               </select>
             </div>
           </div>

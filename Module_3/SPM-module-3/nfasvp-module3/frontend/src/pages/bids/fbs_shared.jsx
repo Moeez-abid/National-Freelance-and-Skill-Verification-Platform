@@ -1,14 +1,26 @@
-// ─── COLOR TOKENS (Deprecated in favor of Tailwind) ────────────────────────────
-export const C = {
-  navy: "#001736",
-  teal: "#89f5e7",
-  white: "#FFFFFF",
-  bgPage: "#f9f9ff",
-  border: "#c4c6d0",
-  textPrimary: "#111c2d",
-  textBody: "#43474f",
-  textMuted: "#747780",
-};
+// ─── COLOR TOKENS — theme-aware ───────────────────────────────────────────────
+function isDark() {
+  return document.documentElement.classList.contains("dark");
+}
+
+export function getC() {
+  const dark = isDark();
+  return {
+    navy:          dark ? "#89f5e7"  : "#001736",
+    teal:          "#89f5e7",
+    white:         dark ? "#001b3d"  : "#FFFFFF",
+    bgPage:        dark ? "#00132e"  : "#f9f9ff",
+    bgCard:        dark ? "#001b3d"  : "#FFFFFF",
+    border:        dark ? "rgba(137,245,231,0.15)" : "#c4c6d0",
+    textPrimary:   dark ? "#e2e8f0"  : "#111c2d",
+    textBody:      dark ? "#94a3b8"  : "#43474f",
+    textMuted:     dark ? "#64748b"  : "#747780",
+    inputBg:       dark ? "#001f47"  : "#FFFFFF",
+    inputText:     dark ? "#e2e8f0"  : "#111c2d",
+  };
+}
+
+export const C = getC();
 
 // ─── NAVBAR & SIDEBAR (Legacy - Now managed by App.jsx) ──────────────────────
 export function Navbar() { return null; }

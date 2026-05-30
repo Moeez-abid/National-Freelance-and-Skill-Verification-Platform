@@ -12,13 +12,12 @@
 
 const jwt  = require('jsonwebtoken');
 const env  = require('../config/env');
-const pool = require('../config/pgClient');
 
 /**
  * Extracts and verifies the Bearer token from the Authorization header.
  * Populates req.user with the decoded JWT payload on success.
  */
-async function authMiddleware(req, res, next) {
+function authMiddleware(req, res, next) {
   // ── 1. Extract token from Authorization header ──────────────────────────────
   const authHeader = req.headers['authorization'] || req.headers['Authorization'];
 
@@ -35,18 +34,16 @@ async function authMiddleware(req, res, next) {
   try {
     const decoded = jwt.verify(token, env.module1.jwtSecret);
 
-    // If the token payload contains a numeric id (from Module 1's old schema),
-    // look up the corresponding UUID in the local users table and replace it.
-    if (typeof decoded.id === 'number') {
-      const result = await pool.query('SELECT uuid FROM users WHERE id = $1', [decoded.id]);
-      if (result.rows.length > 0) {
-        decoded.id = result.rows[0].uuid;
-      }
-    }
-
     // ── 3. Attach decoded payload to req.user ──────────────────────────────────
     // Module 1 payload shape: { id, uuid, role, email, iat, exp }
-    req.user = decoded;
+    // Module 1's integer PK is in `id`; the UUID is in `uuid`.
+    // Module 3's DB uses UUID columns (freelancer_id, client_id, etc.),
+    // so we normalise req.user.id to the UUID value for all downstream queries.
+    req.user = {
+      ...decoded,
+      id: decoded.uuid || decoded.id,  // UUID for DB queries
+      intId: decoded.id,               // original integer PK kept for reference
+    };
 
     return next();
   } catch (err) {

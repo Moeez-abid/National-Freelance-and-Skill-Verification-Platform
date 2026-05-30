@@ -100,6 +100,7 @@ router.get('/:id/bids', authMiddleware, requireRole('client'), async (req, res, 
 router.get('/', async (req, res, next) => {
   try {
     const filters = {
+      q: req.query.q,
       status: req.query.status,
       category_id: req.query.category_id,
       project_type: req.query.project_type,

@@ -101,9 +101,14 @@ router.post('/:id/samples', authMiddleware, requireRole('freelancer'), async (re
 router.get('/', async (req, res, next) => {
   try {
     const filters = {
+      q: req.query.q,
       category_id: req.query.category_id,
       min_rating: req.query.min_rating,
+      max_delivery_days: req.query.max_delivery_days,
+      price_min: req.query.price_min,
+      price_max: req.query.price_max,
       is_featured: req.query.is_featured,
+      sort: req.query.sort,
     };
     const pagination = { page: req.query.page, limit: req.query.limit };
     const result = await gigService.listGigs(filters, pagination);

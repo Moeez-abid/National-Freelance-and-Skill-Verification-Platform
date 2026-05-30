@@ -1,30 +1,43 @@
-// ─── COLOR TOKENS (Deprecated in favor of Tailwind) ────────────────────────────
-export const C = {
-  navy: "#001736",
-  black: "#000000",
-  white: "#FFFFFF",
-  bgPage: "#F9F9FF",
-  bgAlt: "#F0F3FF",
-  bgCard: "#FFFFFF",
-  textPrimary: "#111c2d",
-  textSecondary: "#43474f",
-  textMuted: "#747780",
-  border: "#c4c6d0",
-  green: "#10B981",
-  greenDark: "#005049",
-  greenBg: "#89f5e7",
-  greenBorder: "#6bd8cb",
-  red: "#ba1a1a",
-  redBg: "#ffdad6",
-  redNote: "#ffdad6",
-  redDark: "#93000a",
-  badgeBg: "#dee8ff",
-  badgeText: "#264778",
-  yellow: "#FBBF24",
-  chipBg: "#f0f3ff",
-  navBg: "#001736",
-  teal: "#89f5e7",
-};
+// ─── COLOR TOKENS — theme-aware ───────────────────────────────────────────────
+// Returns the right palette based on whether <html> has the "dark" class.
+function isDark() {
+  return document.documentElement.classList.contains("dark");
+}
+
+export function getC() {
+  const dark = isDark();
+  return {
+    navy:          dark ? "#89f5e7"  : "#001736",
+    black:         dark ? "#e2e8f0"  : "#000000",
+    white:         dark ? "#001b3d"  : "#FFFFFF",
+    bgPage:        dark ? "#00132e"  : "#F9F9FF",
+    bgAlt:         dark ? "#001f47"  : "#F0F3FF",
+    bgCard:        dark ? "#001b3d"  : "#FFFFFF",
+    textPrimary:   dark ? "#e2e8f0"  : "#111c2d",
+    textSecondary: dark ? "#94a3b8"  : "#43474f",
+    textMuted:     dark ? "#64748b"  : "#747780",
+    border:        dark ? "rgba(137,245,231,0.15)" : "#c4c6d0",
+    green:         "#10B981",
+    greenDark:     "#005049",
+    greenBg:       "#89f5e7",
+    greenBorder:   "#6bd8cb",
+    red:           "#ba1a1a",
+    redBg:         dark ? "#3d0a0a"  : "#ffdad6",
+    redNote:       dark ? "#3d0a0a"  : "#ffdad6",
+    redDark:       "#93000a",
+    badgeBg:       dark ? "#002554"  : "#dee8ff",
+    badgeText:     dark ? "#89f5e7"  : "#264778",
+    yellow:        "#FBBF24",
+    chipBg:        dark ? "#001f47"  : "#f0f3ff",
+    navBg:         "#001736",
+    teal:          "#89f5e7",
+    inputBg:       dark ? "#001f47"  : "#FFFFFF",
+    inputText:     dark ? "#e2e8f0"  : "#111c2d",
+  };
+}
+
+// Keep C as a static fallback for any code that imports it directly
+export const C = getC();
 
 // ─── NAVBAR (Legacy - Now managed by App.jsx) ──────────────────────────────────
 export function Navbar() { return null; }

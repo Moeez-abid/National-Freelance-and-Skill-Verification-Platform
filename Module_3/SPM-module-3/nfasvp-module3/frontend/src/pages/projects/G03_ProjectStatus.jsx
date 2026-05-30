@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Btn } from "../gigs/shared";
 import { useMyProjects } from "../../hooks/useProjects";
 
@@ -65,7 +65,28 @@ function ProjectCard({ project, onNavigate, role }) {
 // ══════════════════════════════════════════════════════════════════════════════
 export default function ProjectStatus({ onNavigate, role }) {
   const [activeTab, setActiveTab] = useState("all");
+  const [query, setQuery] = useState("");
   const { projects, loading, error } = useMyProjects({ status: activeTab === 'all' ? null : activeTab });
+
+  const filteredProjects = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) return projects;
+
+    return projects.filter((project) => {
+      const partnerId = role === "client" ? project.freelancer_id : project.client_id;
+      const searchable = [
+        project.title,
+        project.status,
+        project.project_type,
+        project.total_amount,
+        project.total_budget,
+        project.amount,
+        partnerId,
+        project.id,
+      ].filter(Boolean).join(" ").toLowerCase();
+      return searchable.includes(q);
+    });
+  }, [projects, query, role]);
 
   const tabs = [
     { id: "all", label: "All Projects" },
@@ -80,6 +101,16 @@ export default function ProjectStatus({ onNavigate, role }) {
       <div className="border-l-4 border-tertiary-fixed pl-6">
         <h1 className="text-4xl font-black text-primary uppercase tracking-tight">Project Portfolio</h1>
         <p className="text-slate-500 font-medium">Monitoring enterprise execution and milestone synchronization.</p>
+      </div>
+
+      <div className="relative max-w-2xl">
+        <input
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder={role === "freelancer" ? "Search your projects by title, client, status, or amount..." : "Search your projects by title, freelancer, status, or amount..."}
+          className="w-full bg-surface-container-lowest border-0 ring-1 ring-outline-variant/15 rounded-xl px-6 py-4 pl-12 text-sm shadow-sm focus:ring-2 focus:ring-tertiary outline-none transition-all"
+        />
+        <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">search</span>
       </div>
 
       {/* Tabs */}
@@ -102,12 +133,12 @@ export default function ProjectStatus({ onNavigate, role }) {
           <div className="py-20 text-center font-black uppercase tracking-widest text-slate-300 italic">Synchronizing Portfolio Data...</div>
         ) : error ? (
           <div className="py-20 text-center text-error font-black uppercase tracking-widest">Protocol Error: {error}</div>
-        ) : projects.length === 0 ? (
+        ) : filteredProjects.length === 0 ? (
           <div className="py-20 flex flex-col items-center gap-6 bg-surface-container/30 border-2 border-dashed border-outline-variant/20 rounded-3xl text-center">
             <span className="material-symbols-outlined text-6xl text-slate-200">folder_open</span>
             <div className="space-y-1">
-              <h3 className="text-lg font-black text-primary uppercase tracking-tight">No Active Projects</h3>
-              <p className="text-sm text-slate-500 font-medium italic">Initiate engagement via the marketplace to begin tracking.</p>
+              <h3 className="text-lg font-black text-primary uppercase tracking-tight">{query ? "No Matching Projects" : "No Active Projects"}</h3>
+              <p className="text-sm text-slate-500 font-medium italic">{query ? "Try another project title, status, partner id, or amount." : "Initiate engagement via the marketplace to begin tracking."}</p>
             </div>
             <Btn onClick={() => onNavigate(role === 'client' ? 'browse' : 'browsejobs')} variant="outlined">
               Explore Opportunities
@@ -115,7 +146,7 @@ export default function ProjectStatus({ onNavigate, role }) {
           </div>
         ) : (
           <div className="grid grid-cols-1 gap-4">
-            {projects.map(p => <ProjectCard key={p.id} project={p} onNavigate={onNavigate} role={role} />)}
+            {filteredProjects.map(p => <ProjectCard key={p.id} project={p} onNavigate={onNavigate} role={role} />)}
           </div>
         )}
       </div>

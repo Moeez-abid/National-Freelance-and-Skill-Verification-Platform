@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect } from "react";
-import { C, Navbar, Sidebar, Btn, MILESTONES } from "./fbs_shared";
+import { getC, Navbar, Sidebar, Btn, MILESTONES } from "./fbs_shared";
 import { useSubmitBid } from "../../hooks/useBids";
 import { useJob } from "../../hooks/useJobs";
 
@@ -7,6 +7,7 @@ import { useJob } from "../../hooks/useJobs";
 // 09 - Submit Proposal
 // ══════════════════════════════════════════════════════════════════════════════
 export default function SubmitProposal({ onNavigate, params }) {
+  const C = getC();
   const [bidAmount, setBidAmount] = useState("2000");
   const [duration, setDuration] = useState("2 months");
   const [bidType, setBidType] = useState("fixed_price");

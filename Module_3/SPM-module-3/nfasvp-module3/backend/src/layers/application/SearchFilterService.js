@@ -1,4 +1,3 @@
-
 'use strict';
 
 /**
@@ -115,11 +114,16 @@ function buildJobRepoFilters(filters, pagination) {
  */
 function buildGigRepoFilters(filters, pagination) {
   return {
-    category_id: filters.category_id || undefined,
-    min_rating:  filters.min_rating  !== undefined ? Number(filters.min_rating) : undefined,
-    is_featured: filters.is_featured !== undefined ? Boolean(filters.is_featured) : undefined,
-    page:        pagination.page,
-    limit:       pagination.limit,
+    q:                 filters.q || undefined,
+    category_id:       filters.category_id || undefined,
+    min_rating:        filters.min_rating !== undefined ? Number(filters.min_rating) : undefined,
+    max_delivery_days: filters.max_delivery_days !== undefined ? Number(filters.max_delivery_days) : undefined,
+    price_min:         filters.price_min !== undefined ? Number(filters.price_min) : undefined,
+    price_max:         filters.price_max !== undefined ? Number(filters.price_max) : undefined,
+    is_featured:       filters.is_featured !== undefined ? filters.is_featured === true || filters.is_featured === 'true' : undefined,
+    sort:              filters.sort || 'newest',
+    page:              pagination.page,
+    limit:             pagination.limit,
   };
 }
 

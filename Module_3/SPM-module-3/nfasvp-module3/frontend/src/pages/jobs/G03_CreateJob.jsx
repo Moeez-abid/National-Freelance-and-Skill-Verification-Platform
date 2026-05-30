@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { C, Navbar, Btn } from "../gigs/shared";
+import { getC, Navbar, Btn } from "../gigs/shared";
 import { usePostJob } from "../../hooks/useJobs";
 import { useCategories } from "../../hooks/useCategories";
 
 export default function CreateJob({ onNavigate }) {
+  const C = getC();
   const [step, setStep] = useState(1);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");

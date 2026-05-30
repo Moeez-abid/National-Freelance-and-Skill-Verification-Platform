@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { C, Navbar, StickyNote, Btn } from "./shared";
+import { getC, Navbar, StickyNote, Btn } from "./shared";
 import { useCreateGig } from "../../hooks/useGigs";
 import { useCategories } from "../../hooks/useCategories";
 
@@ -7,6 +7,7 @@ import { useCategories } from "../../hooks/useCategories";
 // G03_CreateGig
 // ══════════════════════════════════════════════════════════════════════════════
 export default function CreateGig({ onNavigate, role }) {
+  const C = getC();
   const { createGig, loading, error } = useCreateGig();
   const { categories, loading: loadingCats } = useCategories();
   
@@ -56,7 +57,8 @@ export default function CreateGig({ onNavigate, role }) {
 
   const inputStyle = {
     width: "100%", padding: "12px", border: `1px solid ${C.border}`, borderRadius: 6,
-    fontSize: 14, fontFamily: "'DM Sans', sans-serif", boxSizing: "border-box"
+    fontSize: 14, fontFamily: "'DM Sans', sans-serif", boxSizing: "border-box",
+    background: C.inputBg, color: C.inputText,
   };
 
   const labelStyle = {

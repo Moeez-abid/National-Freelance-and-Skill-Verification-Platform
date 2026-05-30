@@ -35,7 +35,7 @@ app.use(helmet());
 const corsOptions = {
   origin: env.isProduction
     ? (origin, callback) => {
-        const allowed = ['http://localhost:3000', 'http://localhost:5173'];
+        const allowed = ['http://localhost:3000', 'http://localhost:5173', 'http://localhost:5003'];
         if (!origin || allowed.includes(origin)) {
           callback(null, true);
         } else {

@@ -1,8 +1,9 @@
 import { useState, useMemo } from "react";
-import { C, Navbar, Sidebar, StatusBadge, Btn } from "./fbs_shared";
+import { getC, Navbar, Sidebar, StatusBadge, Btn } from "./fbs_shared";
 import { useMyProposals } from "../../hooks/useBids";
 
 export default function MyProposals({ onNavigate, role }) {
+  const C = getC();
   const [activeTab, setActiveTab] = useState("All");
   const TABS = ["All", "Pending", "Accepted", "Rejected", "Withdrawn"];
 

@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { C, Navbar, StickyNote, Btn } from "../gigs/shared";
+import { getC, Navbar, StickyNote, Btn } from "../gigs/shared";
 import { useProject, useUpdateProjectStatus } from "../../hooks/useProjects";
 
 // ══════════════════════════════════════════════════════════════════════════════
 // G03_ProjectDetail (Screen 22)
 // ══════════════════════════════════════════════════════════════════════════════
 export default function ProjectDetail({ onNavigate, params, role }) {
+  const C = getC();
   const { project, loading, error, refresh } = useProject(params?.id);
   const { updateStatus, loading: updating } = useUpdateProjectStatus();
   const [activeTab, setActiveTab] = useState("Milestones");

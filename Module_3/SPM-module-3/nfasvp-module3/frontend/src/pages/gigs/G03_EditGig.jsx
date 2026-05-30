@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import { C, Navbar, StickyNote, Btn } from "./shared";
+import { getC, Navbar, StickyNote, Btn } from "./shared";
 import { useUpdateGig, useGig } from "../../hooks/useGigs";
 import { useCategories } from "../../hooks/useCategories";
 
 export default function EditGig({ onNavigate, params, role }) {
+  const C = getC();
   const { gig, loading: loadingGig } = useGig(params?.id);
   const { updateGig, loading, error } = useUpdateGig();
   const { categories, loading: loadingCats } = useCategories();

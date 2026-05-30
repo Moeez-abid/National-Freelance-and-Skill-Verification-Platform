@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { C, Navbar, StickyNote, Btn } from "../gigs/shared";
+import { getC, Navbar, StickyNote, Btn } from "../gigs/shared";
 import { searchApi } from "../../services/api";
 
 // ─── SEARCH RESULT CARD ─────────────────────────────────────────────────────

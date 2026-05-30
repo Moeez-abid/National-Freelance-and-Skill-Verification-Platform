@@ -89,6 +89,47 @@ function normalisePagination(pagination = {}) {
   return { page, limit };
 }
 
+function toSlug(value) {
+  return String(value)
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+async function resolveSkillNamesToTagIds(skillNames, categoryId) {
+  if (!Array.isArray(skillNames) || skillNames.length === 0) return [];
+
+  const cleanNames = [...new Set(skillNames.map((name) => String(name).trim()).filter(Boolean))];
+  if (cleanNames.length === 0) return [];
+
+  const { data: existingTags, error } = await categoryRepo.getAllTags();
+  if (error) throw new Error(`Failed to resolve skill tags: ${error.message}`);
+
+  const bySlug = new Map((existingTags || []).map((tag) => [tag.slug, tag]));
+  const ids = [];
+
+  for (const name of cleanNames) {
+    const slug = toSlug(name);
+    const existing = bySlug.get(slug);
+    if (existing) {
+      ids.push(existing.id);
+      continue;
+    }
+
+    const { data: created, error: createErr } = await categoryRepo.createTag({
+      name,
+      slug,
+      category_id: categoryId,
+      is_verified: false,
+    });
+    if (createErr) throw new Error(`Failed to create skill tag "${name}": ${createErr.message}`);
+    if (created) ids.push(created.id);
+  }
+
+  return ids;
+}
+
 // ─── SERVICE METHODS ──────────────────────────────────────────────────────────
 
 /**
@@ -103,7 +144,7 @@ function normalisePagination(pagination = {}) {
  * @throws {NotFoundError}  - If category not found
  */
 async function createGig(freelancerId, gigData) {
-  const { title, description, category_id, pricing_tiers, required_tags, thumbnail_url, status = 'draft' } = gigData;
+  const { title, description, category_id, pricing_tiers, required_tags, required_skills, thumbnail_url, status = 'draft' } = gigData;
 
   // 1. Validate core fields
   validateGigFields({ title, description, category_id, status }, true);
@@ -144,8 +185,13 @@ async function createGig(freelancerId, gigData) {
   }
 
   // 7. Link required tags
-  if (Array.isArray(required_tags) && required_tags.length > 0) {
-    await Promise.all(required_tags.map((tagId) => gigRepo.addRequiredTag(gig.id, tagId)));
+  const skillTagIds = await resolveSkillNamesToTagIds(required_skills, category_id);
+  const tagIds = [...new Set([...(required_tags || []), ...skillTagIds])];
+  if (tagIds.length > 0) {
+    await Promise.all(tagIds.map(async (tagId) => {
+      await gigRepo.addRequiredTag(gig.id, tagId);
+      await categoryRepo.incrementTagUsage(tagId);
+    }));
   }
 
   // 8. Return full gig with relations

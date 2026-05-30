@@ -18,10 +18,6 @@ services:
       - postgres-data:/var/lib/postgresql/data
       # Master SQL files run on first boot
       - ./init-db:/docker-entrypoint-initdb.d
-      # --- ADDED FOR MODULE 4 ---
-      # This ensures Module 4's schema and seed data run automatically on first boot
-      - ./Module_4/SPM_Centralized_Db.sql:/docker-entrypoint-initdb.d/04-module4-schema.sql
-      - ./Module_4/SPM_Seed_Data.sql:/docker-entrypoint-initdb.d/05-module4-seed.sql
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U admin -d unified_app_db"]
       interval: 5s
@@ -110,7 +106,7 @@ services:
     container_name: module3-backend
     restart: always
     ports:
-      - "3003:3003"
+      - "4003:4003"
     env_file:
       - ./Module_3/SPM-module-3/nfasvp-module3/backend/.env
     environment:
@@ -119,7 +115,7 @@ services:
       - DB_NAME=unified_app_db
       - DB_USER=admin
       - DB_PASSWORD=admin123
-      - JWT_SECRET=your_super_secret_jwt_key_here
+      - MODULE1_JWT_SECRET=your_super_secret_jwt_key_here
     depends_on:
       postgres:
         condition: service_healthy
@@ -132,9 +128,11 @@ services:
     container_name: module3-frontend
     restart: always
     ports:
-      - "5003:5003" 
+      - "5003:5003"
     env_file:
       - ./Module_3/SPM-module-3/nfasvp-module3/frontend/.env
+    environment:
+      - VITE_PROXY_TARGET=http://module3-backend:4003
     depends_on:
       - module3-backend
 

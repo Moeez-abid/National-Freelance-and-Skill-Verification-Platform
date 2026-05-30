@@ -32,7 +32,7 @@ if (missing.length > 0) {
 
 const env = {
   // Server
-  port: parseInt(process.env.PORT, 10) || 3003,
+  port: parseInt(process.env.PORT, 10) || 4003,
   nodeEnv: process.env.NODE_ENV || 'development',
   isProduction: process.env.NODE_ENV === 'production',
 
@@ -48,7 +48,7 @@ const env = {
   // Module 1 — Auth (JWT validation)
   module1: {
     jwtSecret: process.env.MODULE1_JWT_SECRET,
-    baseUrl: process.env.MODULE1_BASE_URL || '',
+    baseUrl: process.env.MODULE1_BASE_URL || 'http://localhost:4001',
   },
 
   // Module 6 — Communication (outbound)

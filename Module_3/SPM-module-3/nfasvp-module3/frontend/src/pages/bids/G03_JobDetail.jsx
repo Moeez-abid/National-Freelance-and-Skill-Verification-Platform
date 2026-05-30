@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import { C, Navbar, Sidebar, SkillTag, Btn, SectionCard, SectionHeading, MilestoneBadge, MILESTONES } from "./fbs_shared";
+import { getC, Navbar, Sidebar, SkillTag, Btn, SectionCard, SectionHeading, MilestoneBadge, MILESTONES } from "./fbs_shared";
 import { useJob, useUpdateJob } from "../../hooks/useJobs";
 
 // ══════════════════════════════════════════════════════════════════════════════
 // 08 - Job Detail
 // ══════════════════════════════════════════════════════════════════════════════
 export default function JobDetail({ onNavigate, params, role }) {
+  const C = getC();
   const [isEditing, setIsEditing] = useState(false);
   const { job, loading, error } = useJob(params?.id);
   const { updateJob, loading: saving } = useUpdateJob();
@@ -45,7 +46,12 @@ export default function JobDetail({ onNavigate, params, role }) {
     "Proven track record with complex data visualization libraries such as D3.js or Recharts",
   ];
 
-  const jobSkills = job ? (Array.isArray(job.required_skills) ? job.required_skills.map(s => typeof s === 'string' ? s : s.name || s.tag) : ["React", "TypeScript"]) : [];
+  const jobSkills = job ? (Array.isArray(job.required_skills) ? job.required_skills.map(s => {
+    if (typeof s === 'string') return s;
+    if (!s) return 'Skill';
+    const val = s.tag?.name || s.name || s.tag;
+    return typeof val === 'string' ? val : 'Skill';
+  }) : ["React", "TypeScript"]) : [];
 
   const inputStyle = {
     width: "100%", padding: "8px 12px", border: `1px solid ${C.border}`, borderRadius: 8,
@@ -104,7 +110,7 @@ export default function JobDetail({ onNavigate, params, role }) {
                       <div>
                         <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
                           <span style={{ fontWeight: 600, fontSize: 14, color: C.navy, fontFamily: "'Inter', sans-serif" }}>
-                            Client {job.client_id?.substring(0, 4) || 'TechCorp Inc.'}
+                            Client {job.client_id ? String(job.client_id).substring(0, 4) : 'TechCorp Inc.'}
                           </span>
                           <span style={{ color: C.tealDark, fontSize: 13 }}>✓</span>
                         </div>
@@ -115,7 +121,7 @@ export default function JobDetail({ onNavigate, params, role }) {
                     <div>
                       <div style={{ fontSize: 11, color: "#747780", fontFamily: "'Inter', sans-serif" }}>Posted</div>
                       <div style={{ fontSize: 11, fontWeight: 600, color: C.navy, fontFamily: "'Inter', sans-serif" }}>
-                        {new Date(job.created_at).toLocaleDateString()}
+                        {new Date(job.created_at || Date.now()).toLocaleDateString()}
                       </div>
                     </div>
                     <div style={{ width: 1, height: 24, background: C.border }} />
@@ -127,7 +133,7 @@ export default function JobDetail({ onNavigate, params, role }) {
 
                   {/* Skill Tags */}
                   <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-                    {jobSkills.map(s => <SkillTag key={s} label={s} />)}
+                    {jobSkills.map((s, i) => <SkillTag key={i} label={s} />)}
                   </div>
                 </div>
 

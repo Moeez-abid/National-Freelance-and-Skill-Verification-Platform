@@ -8,7 +8,7 @@
  *   Data Access   → handled by the backend (repositories + Supabase)
  *
  * All requests go through the Vite dev proxy:
- *   /api/v1/* → http://localhost:3003/api/v1/*
+ *   /api/v1/* → http://localhost:4003/api/v1/*
  *
  * Authentication:
  *   Pass a JWT (from Module 1 / dev token) via setAuthToken().
@@ -259,7 +259,9 @@ export const projectApi = {
 
   /** GET /api/v1/projects — Get logged-in user's projects */
   myProjects: (filters = {}) => {
-    const params = new URLSearchParams(filters);
+    const params = new URLSearchParams(
+      Object.fromEntries(Object.entries(filters).filter(([, v]) => v != null && v !== ''))
+    );
     return request(`/projects${params.toString() ? `?${params}` : ''}`);
   },
 

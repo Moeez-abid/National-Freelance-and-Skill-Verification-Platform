@@ -16,7 +16,17 @@
 
 // The JWT secret must match MODULE1_JWT_SECRET in backend/.env
 // This is the dev placeholder value — update if your backend .env changes.
-const DEV_JWT_SECRET = import.meta.env.VITE_DEV_JWT_SECRET || 'your-jwt-secret-from-module1';
+const DEV_JWT_SECRET = import.meta.env.VITE_DEV_JWT_SECRET || 'nfasvp-module3-dev-secret-2025';
+
+export const DEV_USERS = [
+  { id: 'c1000000-0000-0000-0000-000000000001', role: 'client', name: 'Client 1', email: 'client1@gigmarket.local' },
+  { id: 'c1000000-0000-0000-0000-000000000002', role: 'client', name: 'Client 2', email: 'client2@gigmarket.local' },
+  { id: 'c1000000-0000-0000-0000-000000000003', role: 'client', name: 'Client 3', email: 'client3@gigmarket.local' },
+  { id: 'f1000000-0000-0000-0000-000000000001', role: 'freelancer', name: 'Freelancer 1', email: 'freelancer1@gigmarket.local' },
+  { id: 'f1000000-0000-0000-0000-000000000002', role: 'freelancer', name: 'Freelancer 2', email: 'freelancer2@gigmarket.local' },
+  { id: 'f1000000-0000-0000-0000-000000000003', role: 'freelancer', name: 'Freelancer 3', email: 'freelancer3@gigmarket.local' },
+  { id: 'f1000000-0000-0000-0000-000000000004', role: 'freelancer', name: 'Freelancer 4', email: 'freelancer4@gigmarket.local' },
+];
 
 /**
  * Simple browser-compatible JWT signer (HMAC-SHA256).
@@ -93,4 +103,13 @@ export async function generateDevToken(role = 'freelancer', overrides = {}) {
  */
 export async function getDevToken(role = 'freelancer') {
   return generateDevToken(role);
+}
+
+export async function getDevTokenForUser(user) {
+  return generateDevToken(user.role, {
+    id: user.id,
+    uuid: user.id,
+    email: user.email,
+    name: user.name,
+  });
 }
