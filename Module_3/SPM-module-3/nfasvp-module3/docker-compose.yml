@@ -1,0 +1,82 @@
+version: '3.8'
+
+services:
+
+  # ── Local PostgreSQL database ──────────────────────────────────────────────
+  postgres:
+    image: postgres:16-alpine
+    container_name: nfasvp-postgres
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: nfasvp_module3
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./database/seed.sql:/docker-entrypoint-initdb.d/seed.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d nfasvp_module3"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - nfasvp-network
+
+  # ── Express REST API backend ───────────────────────────────────────────────
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: nfasvp-backend
+    ports:
+      - "4003:4003"
+    env_file:
+      - ./backend/.env
+    environment:
+      # Override DB_HOST to point at the Docker postgres service
+      DB_HOST: postgres
+    volumes:
+      - ./backend:/app
+      - backend_node_modules:/app/node_modules
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:4003/api/v1/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - nfasvp-network
+
+  # ── React / Vite frontend ──────────────────────────────────────────────────
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: nfasvp-frontend
+    ports:
+      - "5003:5003"
+    env_file:
+      - ./frontend/.env
+    environment:
+      VITE_PROXY_TARGET: http://backend:4003
+    volumes:
+      - ./frontend:/app
+      - frontend_node_modules:/app/node_modules
+    depends_on:
+      - backend
+    networks:
+      - nfasvp-network
+
+networks:
+  nfasvp-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  backend_node_modules:
+  frontend_node_modules:

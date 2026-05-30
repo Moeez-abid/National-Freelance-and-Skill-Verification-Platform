@@ -1,0 +1,35 @@
+{
+  "name": "nfsvp-module3-backend",
+  "version": "1.0.0",
+  "description": "Module 3 – Project & Gig Marketplace REST API for the National Freelance & Skill Verification Platform",
+  "main": "server.js",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "db:seed": "node scripts/seed-local-db.js",
+    "test": "jest --runInBand",
+    "test:report": "jest --runInBand --json --outputFile=jest-results.json && node scripts/write-jest-html-report.js",
+    "test:coverage": "jest --runInBand --coverage"
+  },
+  "dependencies": {
+    "axios": "^1.6.8",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.3.1",
+    "express-validator": "^7.1.0",
+    "helmet": "^7.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
+    "pg": "^8.21.0",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.4",
+    "supertest": "^7.2.2"
+  }
+}

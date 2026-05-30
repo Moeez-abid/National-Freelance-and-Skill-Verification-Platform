@@ -1,0 +1,1767 @@
+{
+  "skills": [
+    {
+      "id": "2442717f-08f9-4391-a7ad-70f5b6237fc3",
+      "name": "JavaScript"
+    },
+    {
+      "id": "3502e432-fa33-4f7b-898a-748c24e2aeee",
+      "name": "React"
+    },
+    {
+      "id": "7b8e63ee-8620-4c05-9747-ea83e3ad2bfc",
+      "name": "Node.js"
+    },
+    {
+      "id": "484d836f-c59f-4ef2-92c9-48bf995791dd",
+      "name": "SQL"
+    }
+  ],
+  "questions": [
+    {
+      "id": "js-q1",
+      "text": "What is the output of typeof null?",
+      "type": "MCQ",
+      "skillId": "2442717f-08f9-4391-a7ad-70f5b6237fc3",
+      "options": [
+        "object",
+        "null",
+        "undefined",
+        "number"
+      ],
+      "correctAnswer": "object",
+      "points": 10
+    },
+    {
+      "id": "js-q2",
+      "text": "Which keyword is used to define a constant in ES6?",
+      "type": "MCQ",
+      "skillId": "2442717f-08f9-4391-a7ad-70f5b6237fc3",
+      "options": [
+        "const",
+        "let",
+        "var",
+        "constant"
+      ],
+      "correctAnswer": "const",
+      "points": 10
+    },
+    {
+      "id": "js-q3",
+      "text": "What does NaN stand for?",
+      "type": "MCQ",
+      "skillId": "2442717f-08f9-4391-a7ad-70f5b6237fc3",
+      "options": [
+        "Not a Number",
+        "New and Nice",
+        "Next and Now",
+        "No absolute Number"
+      ],
+      "correctAnswer": "Not a Number",
+      "points": 10
+    },
+    {
+      "id": "react-q1",
+      "text": "What does React.memo do?",
+      "type": "MCQ",
+      "skillId": "3502e432-fa33-4f7b-898a-748c24e2aeee",
+      "options": [
+        "Caches a value",
+        "Prevents unnecessary re-renders",
+        "Manages state",
+        "Handles side effects"
+      ],
+      "correctAnswer": "Prevents unnecessary re-renders",
+      "points": 10
+    },
+    {
+      "id": "react-q2",
+      "text": "Which hook should be used to memoize a function?",
+      "type": "MCQ",
+      "skillId": "3502e432-fa33-4f7b-898a-748c24e2aeee",
+      "options": [
+        "useMemo",
+        "useRef",
+        "useCallback",
+        "useEffect"
+      ],
+      "correctAnswer": "useCallback",
+      "points": 10
+    },
+    {
+      "id": "react-q3",
+      "text": "Where should you place calculations in a functional component?",
+      "type": "MCQ",
+      "skillId": "3502e432-fa33-4f7b-898a-748c24e2aeee",
+      "options": [
+        "useMemo",
+        "useEffect",
+        "useState",
+        "Inside render"
+      ],
+      "correctAnswer": "useMemo",
+      "points": 10
+    },
+    {
+      "id": "node-q1",
+      "text": "Which core module is used for handling file paths?",
+      "type": "MCQ",
+      "skillId": "7b8e63ee-8620-4c05-9747-ea83e3ad2bfc",
+      "options": [
+        "fs",
+        "path",
+        "url",
+        "os"
+      ],
+      "correctAnswer": "path",
+      "points": 10
+    },
+    {
+      "id": "node-q2",
+      "text": "What is the default port for an Express server?",
+      "type": "MCQ",
+      "skillId": "7b8e63ee-8620-4c05-9747-ea83e3ad2bfc",
+      "options": [
+        "3000",
+        "5000",
+        "8080",
+        "None"
+      ],
+      "correctAnswer": "None",
+      "points": 10
+    },
+    {
+      "id": "node-q3",
+      "text": "Which module provides basic cryptographic functionality?",
+      "type": "MCQ",
+      "skillId": "7b8e63ee-8620-4c05-9747-ea83e3ad2bfc",
+      "options": [
+        "crypto",
+        "security",
+        "hash",
+        "encrypt"
+      ],
+      "correctAnswer": "crypto",
+      "points": 10
+    },
+    {
+      "id": "sql-q1",
+      "text": "Which keyword is used to sort results in SQL?",
+      "type": "MCQ",
+      "skillId": "484d836f-c59f-4ef2-92c9-48bf995791dd",
+      "options": [
+        "SORT BY",
+        "ORDER BY",
+        "GROUP BY",
+        "ARRANGE"
+      ],
+      "correctAnswer": "ORDER BY",
+      "points": 10
+    },
+    {
+      "id": "sql-q2",
+      "text": "Which JOIN returns all records from the left table?",
+      "type": "MCQ",
+      "skillId": "484d836f-c59f-4ef2-92c9-48bf995791dd",
+      "options": [
+        "INNER JOIN",
+        "RIGHT JOIN",
+        "LEFT JOIN",
+        "FULL JOIN"
+      ],
+      "correctAnswer": "LEFT JOIN",
+      "points": 10
+    },
+    {
+      "id": "sql-q3",
+      "text": "What is the primary key typically used for?",
+      "type": "MCQ",
+      "skillId": "484d836f-c59f-4ef2-92c9-48bf995791dd",
+      "options": [
+        "Sorting",
+        "Indexing",
+        "Uniquely identifying a row",
+        "Nothing"
+      ],
+      "correctAnswer": "Uniquely identifying a row",
+      "points": 10
+    },
+    {
+      "id": "8bb5ebda-360c-4574-8419-92b404afbc34",
+      "text": "Which of the following methods is used to add an element to the end of a JavaScript array?",
+      "type": "MCQ",
+      "skillId": "2442717f-08f9-4391-a7ad-70f5b6237fc3",
+      "options": [
+        "push()",
+        "pop()",
+        "shift()",
+        "unshift()"
+      ],
+      "correctAnswer": "push()",
+      "points": 10
+    },
+    {
+      "id": "edcf6b11-e5a2-4c04-a02d-d7d8fa35c0cf",
+      "text": "What is the purpose of the 'let' keyword in JavaScript?",
+      "type": "MCQ",
+      "skillId": "2442717f-08f9-4391-a7ad-70f5b6237fc3",
+      "options": [
+        "To declare a global variable",
+        "To declare a constant variable",
+        "To declare a block-scoped variable",
+        "To declare a function"
+      ],
+      "correctAnswer": "To declare a block-scoped variable",
+      "points": 10
+    },
+    {
+      "id": "d8306bd4-f26a-420b-989f-26bc466ebcf4",
+      "text": "What is the difference between 'null' and 'undefined' in JavaScript?",
+      "type": "MCQ",
+      "skillId": "2442717f-08f9-4391-a7ad-70f5b6237fc3",
+      "options": [
+        "Null is an object, while undefined is a primitive value",
+        "Null is a primitive value, while undefined is an object",
+        "Null represents the absence of a value, while undefined represents an uninitialized variable",
+        "Null represents an uninitialized variable, while undefined represents the absence of a value"
+      ],
+      "correctAnswer": "Null represents the absence of a value, while undefined represents an uninitialized variable",
+      "points": 10
+    },
+    {
+      "id": "1728b20e-aad4-47cb-b5f5-f42069a03664",
+      "text": "What is the purpose of the 'bind()' method in JavaScript?",
+      "type": "MCQ",
+      "skillId": "2442717f-08f9-4391-a7ad-70f5b6237fc3",
+      "options": [
+        "To invoke a function immediately",
+        "To change the context of a function",
+        "To create a new function with the same behavior as the original",
+        "To prevent a function from being invoked"
+      ],
+      "correctAnswer": "To change the context of a function",
+      "points": 10
+    },
+    {
+      "id": "03fa8744-121a-44e2-b6ec-45235b5f6e7c",
+      "text": "Which of the following is a valid way to create a new object in JavaScript?",
+      "type": "MCQ",
+      "skillId": "2442717f-08f9-4391-a7ad-70f5b6237fc3",
+      "options": [
+        "Using the 'new' keyword with a constructor function",
+        "Using the 'Object.create()' method",
+        "Using the 'JSON.parse()' method",
+        "Using the 'eval()' function"
+      ],
+      "correctAnswer": "Using the 'new' keyword with a constructor function",
+      "points": 10
+    },
+    {
+      "id": "11dd1c05-c519-4697-956a-257ef5c17470",
+      "text": "Which SQL statement is used to add a new column to an existing table?",
+      "type": "MCQ",
+      "skillId": "484d836f-c59f-4ef2-92c9-48bf995791dd",
+      "options": [
+        "ALTER TABLE",
+        "CREATE TABLE",
+        "DROP TABLE",
+        "TRUNCATE TABLE"
+      ],
+      "correctAnswer": "ALTER TABLE",
+      "points": 10
+    },
+    {
+      "id": "251111c0-8ad4-4f7c-8138-9e83ec5fa28a",
+      "text": "What is the purpose of the HAVING clause in SQL?",
+      "type": "MCQ",
+      "skillId": "484d836f-c59f-4ef2-92c9-48bf995791dd",
+      "options": [
+        "To specify the conditions for selecting data",
+        "To group data based on one or more columns",
+        "To filter grouped data based on a condition",
+        "To sort data in ascending or descending order"
+      ],
+      "correctAnswer": "To filter grouped data based on a condition",
+      "points": 10
+    },
+    {
+      "id": "a5af9290-465f-4d60-84ab-14336de8c3b2",
+      "text": "What is the difference between INNER JOIN and LEFT JOIN in SQL?",
+      "type": "MCQ",
+      "skillId": "484d836f-c59f-4ef2-92c9-48bf995791dd",
+      "options": [
+        "INNER JOIN returns all rows, while LEFT JOIN returns only matching rows",
+        "INNER JOIN returns only matching rows, while LEFT JOIN returns all rows from the left table",
+        "INNER JOIN is used for aggregating data, while LEFT JOIN is used for filtering data",
+        "INNER JOIN is used for sorting data, while LEFT JOIN is used for grouping data"
+      ],
+      "correctAnswer": "INNER JOIN returns only matching rows, while LEFT JOIN returns all rows from the left table",
+      "points": 10
+    },
+    {
+      "id": "88c1c703-1b3d-4529-a6c4-43577a58507d",
+      "text": "What is the difference between WHERE and HAVING clauses in SQL?",
+      "type": "MCQ",
+      "skillId": "484d836f-c59f-4ef2-92c9-48bf995791dd",
+      "options": [
+        "WHERE is used for filtering grouped data, while HAVING is used for filtering individual rows",
+        "WHERE is used for filtering individual rows, while HAVING is used for filtering grouped data",
+        "WHERE is used for sorting data, while HAVING is used for grouping data",
+        "WHERE is used for aggregating data, while HAVING is used for filtering data"
+      ],
+      "correctAnswer": "WHERE is used for filtering individual rows, while HAVING is used for filtering grouped data",
+      "points": 10
+    },
+    {
+      "id": "f3e729da-70ce-424a-b191-2c78be4b0cc6",
+      "text": "What is the purpose of the GROUP BY clause in SQL?",
+      "type": "MCQ",
+      "skillId": "484d836f-c59f-4ef2-92c9-48bf995791dd",
+      "options": [
+        "To filter data based on a condition",
+        "To sort data in ascending or descending order",
+        "To group data based on one or more columns",
+        "To add a new column to an existing table"
+      ],
+      "correctAnswer": "To group data based on one or more columns",
+      "points": 10
+    },
+    {
+      "id": "8dd51bfb-6640-4552-97fe-a0d08972422e",
+      "text": "Which SQL function is used to calculate the average value of a column?",
+      "type": "MCQ",
+      "skillId": "484d836f-c59f-4ef2-92c9-48bf995791dd",
+      "options": [
+        "SUM",
+        "AVG",
+        "MAX",
+        "MIN"
+      ],
+      "correctAnswer": "AVG",
+      "points": 10
+    },
+    {
+      "id": "38b51989-499e-471d-87dd-3694e80addc5",
+      "text": "Which SQL statement is used to delete all rows from a table?",
+      "type": "MCQ",
+      "skillId": "484d836f-c59f-4ef2-92c9-48bf995791dd",
+      "options": [
+        "DELETE",
+        "TRUNCATE",
+        "DROP",
+        "INSERT"
+      ],
+      "correctAnswer": "TRUNCATE",
+      "points": 10
+    },
+    {
+      "id": "7ca1a37f-136d-4a70-94f6-301f0e536243",
+      "text": "What is the purpose of the ORDER BY clause in SQL?",
+      "type": "MCQ",
+      "skillId": "484d836f-c59f-4ef2-92c9-48bf995791dd",
+      "options": [
+        "To filter data based on a condition",
+        "To group data based on one or more columns",
+        "To sort data in ascending or descending order",
+        "To add a new column to an existing table"
+      ],
+      "correctAnswer": "To sort data in ascending or descending order",
+      "points": 10
+    },
+    {
+      "id": "0af9f987-c6b1-447a-a3d0-0d0fb7d4b440",
+      "text": "Which SQL statement is used to create a copy of an existing table?",
+      "type": "MCQ",
+      "skillId": "484d836f-c59f-4ef2-92c9-48bf995791dd",
+      "options": [
+        "CREATE TABLE",
+        "SELECT INTO",
+        "INSERT INTO",
+        "UPDATE TABLE"
+      ],
+      "correctAnswer": "SELECT INTO",
+      "points": 10
+    },
+    {
+      "id": "47d3174e-71a0-44ad-bf10-c5bcc2c68c07",
+      "text": "Which SQL function is used to concatenate two or more strings?",
+      "type": "MCQ",
+      "skillId": "484d836f-c59f-4ef2-92c9-48bf995791dd",
+      "options": [
+        "CONCAT",
+        "JOIN",
+        "UNION",
+        "MERGE"
+      ],
+      "correctAnswer": "CONCAT",
+      "points": 10
+    },
+    {
+      "id": "f7ea1817-9a5e-4cd9-ae4b-c3e3ecff8560",
+      "text": "What is the purpose of the 'let' keyword in JavaScript?",
+      "type": "MCQ",
+      "skillId": "2442717f-08f9-4391-a7ad-70f5b6237fc3",
+      "options": [
+        "To declare a global variable",
+        "To declare a constant variable",
+        "To declare a block scopied variable",
+        "To declare a function"
+      ],
+      "correctAnswer": "To declare a block scopied variable",
+      "points": 10
+    },
+    {
+      "id": "f351e6a1-f6ac-473c-8761-81ed71916cdf",
+      "text": "What is the difference between 'null' and 'undefined' in JavaScript?",
+      "type": "MCQ",
+      "skillId": "2442717f-08f9-4391-a7ad-70f5b6237fc3",
+      "options": [
+        "Null is an object, undefined is not",
+        "Null is a number, undefined is a string",
+        "Null represents an empty object, undefined represents an uninitialized variable",
+        "Null and undefined are the same"
+      ],
+      "correctAnswer": "Null represents an empty object, undefined represents an uninitialized variable",
+      "points": 10
+    },
+    {
+      "id": "08cc46a8-1c3e-4370-90c5-82936d774142",
+      "text": "What is the purpose of the 'map()' function in JavaScript?",
+      "type": "MCQ",
+      "skillId": "2442717f-08f9-4391-a7ad-70f5b6237fc3",
+      "options": [
+        "To filter an array",
+        "To transform an array",
+        "To sort an array",
+        "To reverse an array"
+      ],
+      "correctAnswer": "To transform an array",
+      "points": 10
+    },
+    {
+      "id": "66418dee-a758-423d-883c-86d9a4df199a",
+      "text": "What is the purpose of the 'async/await' syntax in JavaScript?",
+      "type": "MCQ",
+      "skillId": "2442717f-08f9-4391-a7ad-70f5b6237fc3",
+      "options": [
+        "To handle synchronous code",
+        "To handle asynchronous code",
+        "To handle errors",
+        "To handle callbacks"
+      ],
+      "correctAnswer": "To handle asynchronous code",
+      "points": 10
+    },
+    {
+      "id": "94ceef9e-26c9-496b-8e24-477655f3253b",
+      "text": "What is the difference between the '==' and '===' operators in JavaScript?",
+      "type": "MCQ",
+      "skillId": "2442717f-08f9-4391-a7ad-70f5b6237fc3",
+      "options": [
+        "'==' checks for equality, '===' checks for identity",
+        "'==' checks for identity, '===' checks for equality",
+        "'==' checks for type and value, '===' checks for value only",
+        "'==' checks for value only, '===' checks for type and value"
+      ],
+      "correctAnswer": "'==' checks for value only, '===' checks for type and value",
+      "points": 10
+    },
+    {
+      "id": "4f996c04-a37f-4781-8dd2-bb9442e830e0",
+      "text": "What is the purpose of the 'try/catch' block in JavaScript?",
+      "type": "MCQ",
+      "skillId": "2442717f-08f9-4391-a7ad-70f5b6237fc3",
+      "options": [
+        "To handle asynchronous code",
+        "To handle synchronous code",
+        "To handle errors",
+        "To handle callbacks"
+      ],
+      "correctAnswer": "To handle errors",
+      "points": 10
+    },
+    {
+      "id": "e44bcab0-7f07-49c0-bd6c-a234f073fb1c",
+      "text": "What is the purpose of the 'JSON.parse()' function in JavaScript?",
+      "type": "MCQ",
+      "skillId": "2442717f-08f9-4391-a7ad-70f5b6237fc3",
+      "options": [
+        "To convert a string to a JSON object",
+        "To convert a JSON object to a string",
+        "To parse a JSON string",
+        "To validate a JSON object"
+      ],
+      "correctAnswer": "To convert a string to a JSON object",
+      "points": 10
+    },
+    {
+      "id": "a6403f1c-447e-4210-8259-d5cbb3e7dcb8",
+      "text": "What is Node.js?",
+      "type": "MCQ",
+      "skillId": "7b8e63ee-8620-4c05-9747-ea83e3ad2bfc",
+      "options": [
+        "A JavaScript framework",
+        "A JavaScript library",
+        "A JavaScript runtime environment",
+        "A JavaScript compiler"
+      ],
+      "correctAnswer": "A JavaScript runtime environment",
+      "points": 10
+    },
+    {
+      "id": "592bd471-37b3-4e2d-b7d2-73e55d077399",
+      "text": "Which of the following is a popular Node.js framework?",
+      "type": "MCQ",
+      "skillId": "7b8e63ee-8620-4c05-9747-ea83e3ad2bfc",
+      "options": [
+        "React",
+        "Angular",
+        "Express.js",
+        "Vue.js"
+      ],
+      "correctAnswer": "Express.js",
+      "points": 10
+    },
+    {
+      "id": "e8c05e3e-7a6c-44de-94b6-3a6140f42b7c",
+      "text": "What is the purpose of the 'require' function in Node.js?",
+      "type": "MCQ",
+      "skillId": "7b8e63ee-8620-4c05-9747-ea83e3ad2bfc",
+      "options": [
+        "To import a module",
+        "To export a module",
+        "To create a new module",
+        "To delete a module"
+      ],
+      "correctAnswer": "To import a module",
+      "points": 10
+    },
+    {
+      "id": "19fde6ea-bd0f-4413-9f2c-460f1fe1ed53",
+      "text": "What is the difference between 'let' and 'const' in Node.js?",
+      "type": "MCQ",
+      "skillId": "7b8e63ee-8620-4c05-9747-ea83e3ad2bfc",
+      "options": [
+        "'let' is used for constants, 'const' is used for variables",
+        "'let' is used for variables, 'const' is used for constants",
+        "'let' is used for functions, 'const' is used for classes",
+        "'let' is used for classes, 'const' is used for functions"
+      ],
+      "correctAnswer": "'let' is used for variables, 'const' is used for constants",
+      "points": 10
+    },
+    {
+      "id": "5ea96c88-b006-476a-9c93-810159931600",
+      "text": "What is the purpose of the 'package.json' file in a Node.js project?",
+      "type": "MCQ",
+      "skillId": "7b8e63ee-8620-4c05-9747-ea83e3ad2bfc",
+      "options": [
+        "To store project dependencies",
+        "To store project configuration",
+        "To store project code",
+        "To store project documentation"
+      ],
+      "correctAnswer": "To store project dependencies",
+      "points": 10
+    },
+    {
+      "id": "c79492c5-7eec-4ea6-b39a-fd1366de3b42",
+      "text": "What is the command to install a new package in Node.js using npm?",
+      "type": "MCQ",
+      "skillId": "7b8e63ee-8620-4c05-9747-ea83e3ad2bfc",
+      "options": [
+        "npm install",
+        "npm uninstall",
+        "npm update",
+        "npm remove"
+      ],
+      "correctAnswer": "npm install",
+      "points": 10
+    },
+    {
+      "id": "a47a1f17-0b89-44c8-92b0-0967f2d021a4",
+      "text": "What is the purpose of the 'async/await' syntax in Node.js?",
+      "type": "MCQ",
+      "skillId": "7b8e63ee-8620-4c05-9747-ea83e3ad2bfc",
+      "options": [
+        "To handle synchronous code",
+        "To handle asynchronous code",
+        "To handle parallel code",
+        "To handle concurrent code"
+      ],
+      "correctAnswer": "To handle asynchronous code",
+      "points": 10
+    },
+    {
+      "id": "c9d0195d-7cb9-4c4a-bbb7-05c0ed7f476a",
+      "text": "What is the primary purpose of the 'npm' command in Node.js?",
+      "type": "MCQ",
+      "skillId": "7b8e63ee-8620-4c05-9747-ea83e3ad2bfc",
+      "options": [
+        "To create a new Node.js project",
+        "To manage dependencies and packages for a Node.js project",
+        "To start a Node.js server",
+        "To debug a Node.js application"
+      ],
+      "correctAnswer": "To manage dependencies and packages for a Node.js project",
+      "points": 10
+    },
+    {
+      "id": "d0cac3f0-b3ed-4619-9ab5-371cc7ea7f07",
+      "text": "Which Node.js module is used for file system operations?",
+      "type": "MCQ",
+      "skillId": "7b8e63ee-8620-4c05-9747-ea83e3ad2bfc",
+      "options": [
+        "HTTP",
+        "FS",
+        "Path",
+        "URL"
+      ],
+      "correctAnswer": "FS",
+      "points": 10
+    },
+    {
+      "id": "193c6063-f030-41d2-9b30-fd2ae692598e",
+      "text": "What is the event-driven I/O model used by Node.js?",
+      "type": "MCQ",
+      "skillId": "7b8e63ee-8620-4c05-9747-ea83e3ad2bfc",
+      "options": [
+        "Asynchronous",
+        "Synchronous",
+        "Multi-threaded",
+        "Single-threaded"
+      ],
+      "correctAnswer": "Asynchronous",
+      "points": 10
+    },
+    {
+      "id": "229b5c66-8943-4cb8-abda-f3a93f07d491",
+      "text": "Which of the following is a popular Node.js framework for building web applications?",
+      "type": "MCQ",
+      "skillId": "7b8e63ee-8620-4c05-9747-ea83e3ad2bfc",
+      "options": [
+        "React",
+        "Angular",
+        "Express",
+        "Vue.js"
+      ],
+      "correctAnswer": "Express",
+      "points": 10
+    },
+    {
+      "id": "bbbd2810-5f6a-48ce-a2d5-6ad318b49671",
+      "text": "What is the purpose of the 'require' function in Node.js?",
+      "type": "MCQ",
+      "skillId": "7b8e63ee-8620-4c05-9747-ea83e3ad2bfc",
+      "options": [
+        "To create a new object",
+        "To import a module or package",
+        "To start a Node.js server",
+        "To debug a Node.js application"
+      ],
+      "correctAnswer": "To import a module or package",
+      "points": 10
+    },
+    {
+      "id": "6f322828-c649-46ae-b6ce-0dd669732a7a",
+      "text": "What is the purpose of the 'let' keyword in JavaScript?",
+      "type": "MCQ",
+      "skillId": "2442717f-08f9-4391-a7ad-70f5b6237fc3",
+      "options": [
+        "To declare a global variable",
+        "To declare a constant variable",
+        "To declare a block-scoped variable",
+        "To declare a function"
+      ],
+      "correctAnswer": "To declare a block-scoped variable",
+      "points": 10
+    },
+    {
+      "id": "8d662177-3b88-4e4a-9820-4a8f2088a79a",
+      "text": "Which of the following is a JavaScript framework used for building user interfaces?",
+      "type": "MCQ",
+      "skillId": "2442717f-08f9-4391-a7ad-70f5b6237fc3",
+      "options": [
+        "React",
+        "Angular",
+        "Vue.js",
+        "All of the above"
+      ],
+      "correctAnswer": "All of the above",
+      "points": 10
+    },
+    {
+      "id": "223eb04c-0d4b-4cf6-89ab-fd158f86e212",
+      "text": "What is the difference between 'null' and 'undefined' in JavaScript?",
+      "type": "MCQ",
+      "skillId": "2442717f-08f9-4391-a7ad-70f5b6237fc3",
+      "options": [
+        "'null' represents an empty object, while 'undefined' represents an uninitialized variable",
+        "'null' represents an uninitialized variable, while 'undefined' represents an empty object",
+        "'null' represents a variable that has been explicitly set to nothing, while 'undefined' represents a variable that has not been declared",
+        "'null' and 'undefined' are the same thing"
+      ],
+      "correctAnswer": "'null' represents a variable that has been explicitly set to nothing, while 'undefined' represents a variable that has not been declared",
+      "points": 10
+    },
+    {
+      "id": "e3556fd1-54d1-4280-9c35-fb0ee23ab12c",
+      "text": "Which of the following JavaScript methods is used to add an event listener to an element?",
+      "type": "MCQ",
+      "skillId": "2442717f-08f9-4391-a7ad-70f5b6237fc3",
+      "options": [
+        "addEventListener()",
+        "attachEvent()",
+        "addListener()",
+        "addEventHandler()"
+      ],
+      "correctAnswer": "addEventListener()",
+      "points": 10
+    },
+    {
+      "id": "bb6ffbce-7c1a-44bf-961d-752fe179cb9b",
+      "text": "What is the purpose of the 'finally' block in a JavaScript try-catch statement?",
+      "type": "MCQ",
+      "skillId": "2442717f-08f9-4391-a7ad-70f5b6237fc3",
+      "options": [
+        "To catch and handle exceptions",
+        "To specify code that should run regardless of whether an exception was thrown",
+        "To specify code that should only run if an exception was thrown",
+        "To skip over code that might throw an exception"
+      ],
+      "correctAnswer": "To specify code that should run regardless of whether an exception was thrown",
+      "points": 10
+    }
+  ],
+  "exams": [
+    {
+      "id": "js-exam-1",
+      "title": "JavaScript Fundamentals",
+      "description": "Master the core concepts of JS.",
+      "skillId": "2442717f-08f9-4391-a7ad-70f5b6237fc3",
+      "duration": 30,
+      "passingScore": 20,
+      "questions": [
+        {
+          "examId": "js-exam-1",
+          "questionId": "js-q1",
+          "question": {
+            "id": "js-q1",
+            "text": "What is the output of typeof null?",
+            "type": "MCQ",
+            "skillId": "2442717f-08f9-4391-a7ad-70f5b6237fc3",
+            "options": [
+              "object",
+              "null",
+              "undefined",
+              "number"
+            ],
+            "correctAnswer": "object",
+            "points": 10
+          }
+        },
+        {
+          "examId": "js-exam-1",
+          "questionId": "js-q2",
+          "question": {
+            "id": "js-q2",
+            "text": "Which keyword is used to define a constant in ES6?",
+            "type": "MCQ",
+            "skillId": "2442717f-08f9-4391-a7ad-70f5b6237fc3",
+            "options": [
+              "const",
+              "let",
+              "var",
+              "constant"
+            ],
+            "correctAnswer": "const",
+            "points": 10
+          }
+        },
+        {
+          "examId": "js-exam-1",
+          "questionId": "js-q3",
+          "question": {
+            "id": "js-q3",
+            "text": "What does NaN stand for?",
+            "type": "MCQ",
+            "skillId": "2442717f-08f9-4391-a7ad-70f5b6237fc3",
+            "options": [
+              "Not a Number",
+              "New and Nice",
+              "Next and Now",
+              "No absolute Number"
+            ],
+            "correctAnswer": "Not a Number",
+            "points": 10
+          }
+        },
+        {
+          "examId": "js-exam-1",
+          "questionId": "8bb5ebda-360c-4574-8419-92b404afbc34",
+          "question": {
+            "id": "8bb5ebda-360c-4574-8419-92b404afbc34",
+            "text": "Which of the following methods is used to add an element to the end of a JavaScript array?",
+            "type": "MCQ",
+            "skillId": "2442717f-08f9-4391-a7ad-70f5b6237fc3",
+            "options": [
+              "push()",
+              "pop()",
+              "shift()",
+              "unshift()"
+            ],
+            "correctAnswer": "push()",
+            "points": 10
+          }
+        },
+        {
+          "examId": "js-exam-1",
+          "questionId": "03fa8744-121a-44e2-b6ec-45235b5f6e7c",
+          "question": {
+            "id": "03fa8744-121a-44e2-b6ec-45235b5f6e7c",
+            "text": "Which of the following is a valid way to create a new object in JavaScript?",
+            "type": "MCQ",
+            "skillId": "2442717f-08f9-4391-a7ad-70f5b6237fc3",
+            "options": [
+              "Using the 'new' keyword with a constructor function",
+              "Using the 'Object.create()' method",
+              "Using the 'JSON.parse()' method",
+              "Using the 'eval()' function"
+            ],
+            "correctAnswer": "Using the 'new' keyword with a constructor function",
+            "points": 10
+          }
+        },
+        {
+          "examId": "js-exam-1",
+          "questionId": "d8306bd4-f26a-420b-989f-26bc466ebcf4",
+          "question": {
+            "id": "d8306bd4-f26a-420b-989f-26bc466ebcf4",
+            "text": "What is the difference between 'null' and 'undefined' in JavaScript?",
+            "type": "MCQ",
+            "skillId": "2442717f-08f9-4391-a7ad-70f5b6237fc3",
+            "options": [
+              "Null is an object, while undefined is a primitive value",
+              "Null is a primitive value, while undefined is an object",
+              "Null represents the absence of a value, while undefined represents an uninitialized variable",
+              "Null represents an uninitialized variable, while undefined represents the absence of a value"
+            ],
+            "correctAnswer": "Null represents the absence of a value, while undefined represents an uninitialized variable",
+            "points": 10
+          }
+        },
+        {
+          "examId": "js-exam-1",
+          "questionId": "edcf6b11-e5a2-4c04-a02d-d7d8fa35c0cf",
+          "question": {
+            "id": "edcf6b11-e5a2-4c04-a02d-d7d8fa35c0cf",
+            "text": "What is the purpose of the 'let' keyword in JavaScript?",
+            "type": "MCQ",
+            "skillId": "2442717f-08f9-4391-a7ad-70f5b6237fc3",
+            "options": [
+              "To declare a global variable",
+              "To declare a constant variable",
+              "To declare a block-scoped variable",
+              "To declare a function"
+            ],
+            "correctAnswer": "To declare a block-scoped variable",
+            "points": 10
+          }
+        },
+        {
+          "examId": "js-exam-1",
+          "questionId": "1728b20e-aad4-47cb-b5f5-f42069a03664",
+          "question": {
+            "id": "1728b20e-aad4-47cb-b5f5-f42069a03664",
+            "text": "What is the purpose of the 'bind()' method in JavaScript?",
+            "type": "MCQ",
+            "skillId": "2442717f-08f9-4391-a7ad-70f5b6237fc3",
+            "options": [
+              "To invoke a function immediately",
+              "To change the context of a function",
+              "To create a new function with the same behavior as the original",
+              "To prevent a function from being invoked"
+            ],
+            "correctAnswer": "To change the context of a function",
+            "points": 10
+          }
+        },
+        {
+          "examId": "js-exam-1",
+          "questionId": "f7ea1817-9a5e-4cd9-ae4b-c3e3ecff8560",
+          "question": {
+            "id": "f7ea1817-9a5e-4cd9-ae4b-c3e3ecff8560",
+            "text": "What is the purpose of the 'let' keyword in JavaScript?",
+            "type": "MCQ",
+            "skillId": "2442717f-08f9-4391-a7ad-70f5b6237fc3",
+            "options": [
+              "To declare a global variable",
+              "To declare a constant variable",
+              "To declare a block scopied variable",
+              "To declare a function"
+            ],
+            "correctAnswer": "To declare a block scopied variable",
+            "points": 10
+          }
+        },
+        {
+          "examId": "js-exam-1",
+          "questionId": "f351e6a1-f6ac-473c-8761-81ed71916cdf",
+          "question": {
+            "id": "f351e6a1-f6ac-473c-8761-81ed71916cdf",
+            "text": "What is the difference between 'null' and 'undefined' in JavaScript?",
+            "type": "MCQ",
+            "skillId": "2442717f-08f9-4391-a7ad-70f5b6237fc3",
+            "options": [
+              "Null is an object, undefined is not",
+              "Null is a number, undefined is a string",
+              "Null represents an empty object, undefined represents an uninitialized variable",
+              "Null and undefined are the same"
+            ],
+            "correctAnswer": "Null represents an empty object, undefined represents an uninitialized variable",
+            "points": 10
+          }
+        },
+        {
+          "examId": "js-exam-1",
+          "questionId": "08cc46a8-1c3e-4370-90c5-82936d774142",
+          "question": {
+            "id": "08cc46a8-1c3e-4370-90c5-82936d774142",
+            "text": "What is the purpose of the 'map()' function in JavaScript?",
+            "type": "MCQ",
+            "skillId": "2442717f-08f9-4391-a7ad-70f5b6237fc3",
+            "options": [
+              "To filter an array",
+              "To transform an array",
+              "To sort an array",
+              "To reverse an array"
+            ],
+            "correctAnswer": "To transform an array",
+            "points": 10
+          }
+        },
+        {
+          "examId": "js-exam-1",
+          "questionId": "66418dee-a758-423d-883c-86d9a4df199a",
+          "question": {
+            "id": "66418dee-a758-423d-883c-86d9a4df199a",
+            "text": "What is the purpose of the 'async/await' syntax in JavaScript?",
+            "type": "MCQ",
+            "skillId": "2442717f-08f9-4391-a7ad-70f5b6237fc3",
+            "options": [
+              "To handle synchronous code",
+              "To handle asynchronous code",
+              "To handle errors",
+              "To handle callbacks"
+            ],
+            "correctAnswer": "To handle asynchronous code",
+            "points": 10
+          }
+        },
+        {
+          "examId": "js-exam-1",
+          "questionId": "94ceef9e-26c9-496b-8e24-477655f3253b",
+          "question": {
+            "id": "94ceef9e-26c9-496b-8e24-477655f3253b",
+            "text": "What is the difference between the '==' and '===' operators in JavaScript?",
+            "type": "MCQ",
+            "skillId": "2442717f-08f9-4391-a7ad-70f5b6237fc3",
+            "options": [
+              "'==' checks for equality, '===' checks for identity",
+              "'==' checks for identity, '===' checks for equality",
+              "'==' checks for type and value, '===' checks for value only",
+              "'==' checks for value only, '===' checks for type and value"
+            ],
+            "correctAnswer": "'==' checks for value only, '===' checks for type and value",
+            "points": 10
+          }
+        },
+        {
+          "examId": "js-exam-1",
+          "questionId": "4f996c04-a37f-4781-8dd2-bb9442e830e0",
+          "question": {
+            "id": "4f996c04-a37f-4781-8dd2-bb9442e830e0",
+            "text": "What is the purpose of the 'try/catch' block in JavaScript?",
+            "type": "MCQ",
+            "skillId": "2442717f-08f9-4391-a7ad-70f5b6237fc3",
+            "options": [
+              "To handle asynchronous code",
+              "To handle synchronous code",
+              "To handle errors",
+              "To handle callbacks"
+            ],
+            "correctAnswer": "To handle errors",
+            "points": 10
+          }
+        },
+        {
+          "examId": "js-exam-1",
+          "questionId": "e44bcab0-7f07-49c0-bd6c-a234f073fb1c",
+          "question": {
+            "id": "e44bcab0-7f07-49c0-bd6c-a234f073fb1c",
+            "text": "What is the purpose of the 'JSON.parse()' function in JavaScript?",
+            "type": "MCQ",
+            "skillId": "2442717f-08f9-4391-a7ad-70f5b6237fc3",
+            "options": [
+              "To convert a string to a JSON object",
+              "To convert a JSON object to a string",
+              "To parse a JSON string",
+              "To validate a JSON object"
+            ],
+            "correctAnswer": "To convert a string to a JSON object",
+            "points": 10
+          }
+        }
+      ],
+      "questionIds": [
+        "js-q1",
+        "js-q2",
+        "js-q3",
+        "8bb5ebda-360c-4574-8419-92b404afbc34",
+        "03fa8744-121a-44e2-b6ec-45235b5f6e7c",
+        "d8306bd4-f26a-420b-989f-26bc466ebcf4",
+        "edcf6b11-e5a2-4c04-a02d-d7d8fa35c0cf",
+        "1728b20e-aad4-47cb-b5f5-f42069a03664",
+        "f7ea1817-9a5e-4cd9-ae4b-c3e3ecff8560",
+        "f351e6a1-f6ac-473c-8761-81ed71916cdf",
+        "08cc46a8-1c3e-4370-90c5-82936d774142",
+        "66418dee-a758-423d-883c-86d9a4df199a",
+        "94ceef9e-26c9-496b-8e24-477655f3253b",
+        "4f996c04-a37f-4781-8dd2-bb9442e830e0",
+        "e44bcab0-7f07-49c0-bd6c-a234f073fb1c"
+      ]
+    },
+    {
+      "id": "react-exam-1",
+      "title": "React Performance Tuning",
+      "description": "Optimize your React apps like a pro.",
+      "skillId": "3502e432-fa33-4f7b-898a-748c24e2aeee",
+      "duration": 6,
+      "passingScore": 20,
+      "questions": [
+        {
+          "examId": "react-exam-1",
+          "questionId": "react-q1",
+          "question": {
+            "id": "react-q1",
+            "text": "What does React.memo do?",
+            "type": "MCQ",
+            "skillId": "3502e432-fa33-4f7b-898a-748c24e2aeee",
+            "options": [
+              "Caches a value",
+              "Prevents unnecessary re-renders",
+              "Manages state",
+              "Handles side effects"
+            ],
+            "correctAnswer": "Prevents unnecessary re-renders",
+            "points": 10
+          }
+        },
+        {
+          "examId": "react-exam-1",
+          "questionId": "react-q2",
+          "question": {
+            "id": "react-q2",
+            "text": "Which hook should be used to memoize a function?",
+            "type": "MCQ",
+            "skillId": "3502e432-fa33-4f7b-898a-748c24e2aeee",
+            "options": [
+              "useMemo",
+              "useRef",
+              "useCallback",
+              "useEffect"
+            ],
+            "correctAnswer": "useCallback",
+            "points": 10
+          }
+        },
+        {
+          "examId": "react-exam-1",
+          "questionId": "react-q3",
+          "question": {
+            "id": "react-q3",
+            "text": "Where should you place calculations in a functional component?",
+            "type": "MCQ",
+            "skillId": "3502e432-fa33-4f7b-898a-748c24e2aeee",
+            "options": [
+              "useMemo",
+              "useEffect",
+              "useState",
+              "Inside render"
+            ],
+            "correctAnswer": "useMemo",
+            "points": 10
+          }
+        }
+      ],
+      "questionIds": [
+        "react-q1",
+        "react-q2",
+        "react-q3"
+      ]
+    },
+    {
+      "id": "node-exam-1",
+      "title": "Node.js Backend Mastery",
+      "description": "Build scalable servers with Node.",
+      "skillId": "7b8e63ee-8620-4c05-9747-ea83e3ad2bfc",
+      "duration": 30,
+      "passingScore": 20,
+      "questions": [
+        {
+          "examId": "node-exam-1",
+          "questionId": "node-q1",
+          "question": {
+            "id": "node-q1",
+            "text": "Which core module is used for handling file paths?",
+            "type": "MCQ",
+            "skillId": "7b8e63ee-8620-4c05-9747-ea83e3ad2bfc",
+            "options": [
+              "fs",
+              "path",
+              "url",
+              "os"
+            ],
+            "correctAnswer": "path",
+            "points": 10
+          }
+        },
+        {
+          "examId": "node-exam-1",
+          "questionId": "node-q2",
+          "question": {
+            "id": "node-q2",
+            "text": "What is the default port for an Express server?",
+            "type": "MCQ",
+            "skillId": "7b8e63ee-8620-4c05-9747-ea83e3ad2bfc",
+            "options": [
+              "3000",
+              "5000",
+              "8080",
+              "None"
+            ],
+            "correctAnswer": "None",
+            "points": 10
+          }
+        },
+        {
+          "examId": "node-exam-1",
+          "questionId": "node-q3",
+          "question": {
+            "id": "node-q3",
+            "text": "Which module provides basic cryptographic functionality?",
+            "type": "MCQ",
+            "skillId": "7b8e63ee-8620-4c05-9747-ea83e3ad2bfc",
+            "options": [
+              "crypto",
+              "security",
+              "hash",
+              "encrypt"
+            ],
+            "correctAnswer": "crypto",
+            "points": 10
+          }
+        },
+        {
+          "examId": "node-exam-1",
+          "questionId": "a6403f1c-447e-4210-8259-d5cbb3e7dcb8",
+          "question": {
+            "id": "a6403f1c-447e-4210-8259-d5cbb3e7dcb8",
+            "text": "What is Node.js?",
+            "type": "MCQ",
+            "skillId": "7b8e63ee-8620-4c05-9747-ea83e3ad2bfc",
+            "options": [
+              "A JavaScript framework",
+              "A JavaScript library",
+              "A JavaScript runtime environment",
+              "A JavaScript compiler"
+            ],
+            "correctAnswer": "A JavaScript runtime environment",
+            "points": 10
+          }
+        },
+        {
+          "examId": "node-exam-1",
+          "questionId": "592bd471-37b3-4e2d-b7d2-73e55d077399",
+          "question": {
+            "id": "592bd471-37b3-4e2d-b7d2-73e55d077399",
+            "text": "Which of the following is a popular Node.js framework?",
+            "type": "MCQ",
+            "skillId": "7b8e63ee-8620-4c05-9747-ea83e3ad2bfc",
+            "options": [
+              "React",
+              "Angular",
+              "Express.js",
+              "Vue.js"
+            ],
+            "correctAnswer": "Express.js",
+            "points": 10
+          }
+        },
+        {
+          "examId": "node-exam-1",
+          "questionId": "e8c05e3e-7a6c-44de-94b6-3a6140f42b7c",
+          "question": {
+            "id": "e8c05e3e-7a6c-44de-94b6-3a6140f42b7c",
+            "text": "What is the purpose of the 'require' function in Node.js?",
+            "type": "MCQ",
+            "skillId": "7b8e63ee-8620-4c05-9747-ea83e3ad2bfc",
+            "options": [
+              "To import a module",
+              "To export a module",
+              "To create a new module",
+              "To delete a module"
+            ],
+            "correctAnswer": "To import a module",
+            "points": 10
+          }
+        },
+        {
+          "examId": "node-exam-1",
+          "questionId": "19fde6ea-bd0f-4413-9f2c-460f1fe1ed53",
+          "question": {
+            "id": "19fde6ea-bd0f-4413-9f2c-460f1fe1ed53",
+            "text": "What is the difference between 'let' and 'const' in Node.js?",
+            "type": "MCQ",
+            "skillId": "7b8e63ee-8620-4c05-9747-ea83e3ad2bfc",
+            "options": [
+              "'let' is used for constants, 'const' is used for variables",
+              "'let' is used for variables, 'const' is used for constants",
+              "'let' is used for functions, 'const' is used for classes",
+              "'let' is used for classes, 'const' is used for functions"
+            ],
+            "correctAnswer": "'let' is used for variables, 'const' is used for constants",
+            "points": 10
+          }
+        },
+        {
+          "examId": "node-exam-1",
+          "questionId": "5ea96c88-b006-476a-9c93-810159931600",
+          "question": {
+            "id": "5ea96c88-b006-476a-9c93-810159931600",
+            "text": "What is the purpose of the 'package.json' file in a Node.js project?",
+            "type": "MCQ",
+            "skillId": "7b8e63ee-8620-4c05-9747-ea83e3ad2bfc",
+            "options": [
+              "To store project dependencies",
+              "To store project configuration",
+              "To store project code",
+              "To store project documentation"
+            ],
+            "correctAnswer": "To store project dependencies",
+            "points": 10
+          }
+        },
+        {
+          "examId": "node-exam-1",
+          "questionId": "c79492c5-7eec-4ea6-b39a-fd1366de3b42",
+          "question": {
+            "id": "c79492c5-7eec-4ea6-b39a-fd1366de3b42",
+            "text": "What is the command to install a new package in Node.js using npm?",
+            "type": "MCQ",
+            "skillId": "7b8e63ee-8620-4c05-9747-ea83e3ad2bfc",
+            "options": [
+              "npm install",
+              "npm uninstall",
+              "npm update",
+              "npm remove"
+            ],
+            "correctAnswer": "npm install",
+            "points": 10
+          }
+        },
+        {
+          "examId": "node-exam-1",
+          "questionId": "a47a1f17-0b89-44c8-92b0-0967f2d021a4",
+          "question": {
+            "id": "a47a1f17-0b89-44c8-92b0-0967f2d021a4",
+            "text": "What is the purpose of the 'async/await' syntax in Node.js?",
+            "type": "MCQ",
+            "skillId": "7b8e63ee-8620-4c05-9747-ea83e3ad2bfc",
+            "options": [
+              "To handle synchronous code",
+              "To handle asynchronous code",
+              "To handle parallel code",
+              "To handle concurrent code"
+            ],
+            "correctAnswer": "To handle asynchronous code",
+            "points": 10
+          }
+        },
+        {
+          "examId": "node-exam-1",
+          "questionId": "c9d0195d-7cb9-4c4a-bbb7-05c0ed7f476a",
+          "question": {
+            "id": "c9d0195d-7cb9-4c4a-bbb7-05c0ed7f476a",
+            "text": "What is the primary purpose of the 'npm' command in Node.js?",
+            "type": "MCQ",
+            "skillId": "7b8e63ee-8620-4c05-9747-ea83e3ad2bfc",
+            "options": [
+              "To create a new Node.js project",
+              "To manage dependencies and packages for a Node.js project",
+              "To start a Node.js server",
+              "To debug a Node.js application"
+            ],
+            "correctAnswer": "To manage dependencies and packages for a Node.js project",
+            "points": 10
+          }
+        },
+        {
+          "examId": "node-exam-1",
+          "questionId": "d0cac3f0-b3ed-4619-9ab5-371cc7ea7f07",
+          "question": {
+            "id": "d0cac3f0-b3ed-4619-9ab5-371cc7ea7f07",
+            "text": "Which Node.js module is used for file system operations?",
+            "type": "MCQ",
+            "skillId": "7b8e63ee-8620-4c05-9747-ea83e3ad2bfc",
+            "options": [
+              "HTTP",
+              "FS",
+              "Path",
+              "URL"
+            ],
+            "correctAnswer": "FS",
+            "points": 10
+          }
+        },
+        {
+          "examId": "node-exam-1",
+          "questionId": "193c6063-f030-41d2-9b30-fd2ae692598e",
+          "question": {
+            "id": "193c6063-f030-41d2-9b30-fd2ae692598e",
+            "text": "What is the event-driven I/O model used by Node.js?",
+            "type": "MCQ",
+            "skillId": "7b8e63ee-8620-4c05-9747-ea83e3ad2bfc",
+            "options": [
+              "Asynchronous",
+              "Synchronous",
+              "Multi-threaded",
+              "Single-threaded"
+            ],
+            "correctAnswer": "Asynchronous",
+            "points": 10
+          }
+        },
+        {
+          "examId": "node-exam-1",
+          "questionId": "229b5c66-8943-4cb8-abda-f3a93f07d491",
+          "question": {
+            "id": "229b5c66-8943-4cb8-abda-f3a93f07d491",
+            "text": "Which of the following is a popular Node.js framework for building web applications?",
+            "type": "MCQ",
+            "skillId": "7b8e63ee-8620-4c05-9747-ea83e3ad2bfc",
+            "options": [
+              "React",
+              "Angular",
+              "Express",
+              "Vue.js"
+            ],
+            "correctAnswer": "Express",
+            "points": 10
+          }
+        },
+        {
+          "examId": "node-exam-1",
+          "questionId": "bbbd2810-5f6a-48ce-a2d5-6ad318b49671",
+          "question": {
+            "id": "bbbd2810-5f6a-48ce-a2d5-6ad318b49671",
+            "text": "What is the purpose of the 'require' function in Node.js?",
+            "type": "MCQ",
+            "skillId": "7b8e63ee-8620-4c05-9747-ea83e3ad2bfc",
+            "options": [
+              "To create a new object",
+              "To import a module or package",
+              "To start a Node.js server",
+              "To debug a Node.js application"
+            ],
+            "correctAnswer": "To import a module or package",
+            "points": 10
+          }
+        }
+      ],
+      "questionIds": [
+        "node-q1",
+        "node-q2",
+        "node-q3",
+        "a6403f1c-447e-4210-8259-d5cbb3e7dcb8",
+        "592bd471-37b3-4e2d-b7d2-73e55d077399",
+        "e8c05e3e-7a6c-44de-94b6-3a6140f42b7c",
+        "19fde6ea-bd0f-4413-9f2c-460f1fe1ed53",
+        "5ea96c88-b006-476a-9c93-810159931600",
+        "c79492c5-7eec-4ea6-b39a-fd1366de3b42",
+        "a47a1f17-0b89-44c8-92b0-0967f2d021a4",
+        "c9d0195d-7cb9-4c4a-bbb7-05c0ed7f476a",
+        "d0cac3f0-b3ed-4619-9ab5-371cc7ea7f07",
+        "193c6063-f030-41d2-9b30-fd2ae692598e",
+        "229b5c66-8943-4cb8-abda-f3a93f07d491",
+        "bbbd2810-5f6a-48ce-a2d5-6ad318b49671"
+      ]
+    },
+    {
+      "id": "sql-exam-1",
+      "title": "SQL Query Optimization",
+      "description": "Write fast and efficient queries.",
+      "skillId": "484d836f-c59f-4ef2-92c9-48bf995791dd",
+      "duration": 26,
+      "passingScore": 20,
+      "questions": [
+        {
+          "examId": "sql-exam-1",
+          "questionId": "sql-q1",
+          "question": {
+            "id": "sql-q1",
+            "text": "Which keyword is used to sort results in SQL?",
+            "type": "MCQ",
+            "skillId": "484d836f-c59f-4ef2-92c9-48bf995791dd",
+            "options": [
+              "SORT BY",
+              "ORDER BY",
+              "GROUP BY",
+              "ARRANGE"
+            ],
+            "correctAnswer": "ORDER BY",
+            "points": 10
+          }
+        },
+        {
+          "examId": "sql-exam-1",
+          "questionId": "sql-q2",
+          "question": {
+            "id": "sql-q2",
+            "text": "Which JOIN returns all records from the left table?",
+            "type": "MCQ",
+            "skillId": "484d836f-c59f-4ef2-92c9-48bf995791dd",
+            "options": [
+              "INNER JOIN",
+              "RIGHT JOIN",
+              "LEFT JOIN",
+              "FULL JOIN"
+            ],
+            "correctAnswer": "LEFT JOIN",
+            "points": 10
+          }
+        },
+        {
+          "examId": "sql-exam-1",
+          "questionId": "sql-q3",
+          "question": {
+            "id": "sql-q3",
+            "text": "What is the primary key typically used for?",
+            "type": "MCQ",
+            "skillId": "484d836f-c59f-4ef2-92c9-48bf995791dd",
+            "options": [
+              "Sorting",
+              "Indexing",
+              "Uniquely identifying a row",
+              "Nothing"
+            ],
+            "correctAnswer": "Uniquely identifying a row",
+            "points": 10
+          }
+        },
+        {
+          "examId": "sql-exam-1",
+          "questionId": "47d3174e-71a0-44ad-bf10-c5bcc2c68c07",
+          "question": {
+            "id": "47d3174e-71a0-44ad-bf10-c5bcc2c68c07",
+            "text": "Which SQL function is used to concatenate two or more strings?",
+            "type": "MCQ",
+            "skillId": "484d836f-c59f-4ef2-92c9-48bf995791dd",
+            "options": [
+              "CONCAT",
+              "JOIN",
+              "UNION",
+              "MERGE"
+            ],
+            "correctAnswer": "CONCAT",
+            "points": 10
+          }
+        },
+        {
+          "examId": "sql-exam-1",
+          "questionId": "0af9f987-c6b1-447a-a3d0-0d0fb7d4b440",
+          "question": {
+            "id": "0af9f987-c6b1-447a-a3d0-0d0fb7d4b440",
+            "text": "Which SQL statement is used to create a copy of an existing table?",
+            "type": "MCQ",
+            "skillId": "484d836f-c59f-4ef2-92c9-48bf995791dd",
+            "options": [
+              "CREATE TABLE",
+              "SELECT INTO",
+              "INSERT INTO",
+              "UPDATE TABLE"
+            ],
+            "correctAnswer": "SELECT INTO",
+            "points": 10
+          }
+        },
+        {
+          "examId": "sql-exam-1",
+          "questionId": "8dd51bfb-6640-4552-97fe-a0d08972422e",
+          "question": {
+            "id": "8dd51bfb-6640-4552-97fe-a0d08972422e",
+            "text": "Which SQL function is used to calculate the average value of a column?",
+            "type": "MCQ",
+            "skillId": "484d836f-c59f-4ef2-92c9-48bf995791dd",
+            "options": [
+              "SUM",
+              "AVG",
+              "MAX",
+              "MIN"
+            ],
+            "correctAnswer": "AVG",
+            "points": 10
+          }
+        },
+        {
+          "examId": "sql-exam-1",
+          "questionId": "7ca1a37f-136d-4a70-94f6-301f0e536243",
+          "question": {
+            "id": "7ca1a37f-136d-4a70-94f6-301f0e536243",
+            "text": "What is the purpose of the ORDER BY clause in SQL?",
+            "type": "MCQ",
+            "skillId": "484d836f-c59f-4ef2-92c9-48bf995791dd",
+            "options": [
+              "To filter data based on a condition",
+              "To group data based on one or more columns",
+              "To sort data in ascending or descending order",
+              "To add a new column to an existing table"
+            ],
+            "correctAnswer": "To sort data in ascending or descending order",
+            "points": 10
+          }
+        },
+        {
+          "examId": "sql-exam-1",
+          "questionId": "38b51989-499e-471d-87dd-3694e80addc5",
+          "question": {
+            "id": "38b51989-499e-471d-87dd-3694e80addc5",
+            "text": "Which SQL statement is used to delete all rows from a table?",
+            "type": "MCQ",
+            "skillId": "484d836f-c59f-4ef2-92c9-48bf995791dd",
+            "options": [
+              "DELETE",
+              "TRUNCATE",
+              "DROP",
+              "INSERT"
+            ],
+            "correctAnswer": "TRUNCATE",
+            "points": 10
+          }
+        },
+        {
+          "examId": "sql-exam-1",
+          "questionId": "a5af9290-465f-4d60-84ab-14336de8c3b2",
+          "question": {
+            "id": "a5af9290-465f-4d60-84ab-14336de8c3b2",
+            "text": "What is the difference between INNER JOIN and LEFT JOIN in SQL?",
+            "type": "MCQ",
+            "skillId": "484d836f-c59f-4ef2-92c9-48bf995791dd",
+            "options": [
+              "INNER JOIN returns all rows, while LEFT JOIN returns only matching rows",
+              "INNER JOIN returns only matching rows, while LEFT JOIN returns all rows from the left table",
+              "INNER JOIN is used for aggregating data, while LEFT JOIN is used for filtering data",
+              "INNER JOIN is used for sorting data, while LEFT JOIN is used for grouping data"
+            ],
+            "correctAnswer": "INNER JOIN returns only matching rows, while LEFT JOIN returns all rows from the left table",
+            "points": 10
+          }
+        },
+        {
+          "examId": "sql-exam-1",
+          "questionId": "251111c0-8ad4-4f7c-8138-9e83ec5fa28a",
+          "question": {
+            "id": "251111c0-8ad4-4f7c-8138-9e83ec5fa28a",
+            "text": "What is the purpose of the HAVING clause in SQL?",
+            "type": "MCQ",
+            "skillId": "484d836f-c59f-4ef2-92c9-48bf995791dd",
+            "options": [
+              "To specify the conditions for selecting data",
+              "To group data based on one or more columns",
+              "To filter grouped data based on a condition",
+              "To sort data in ascending or descending order"
+            ],
+            "correctAnswer": "To filter grouped data based on a condition",
+            "points": 10
+          }
+        },
+        {
+          "examId": "sql-exam-1",
+          "questionId": "11dd1c05-c519-4697-956a-257ef5c17470",
+          "question": {
+            "id": "11dd1c05-c519-4697-956a-257ef5c17470",
+            "text": "Which SQL statement is used to add a new column to an existing table?",
+            "type": "MCQ",
+            "skillId": "484d836f-c59f-4ef2-92c9-48bf995791dd",
+            "options": [
+              "ALTER TABLE",
+              "CREATE TABLE",
+              "DROP TABLE",
+              "TRUNCATE TABLE"
+            ],
+            "correctAnswer": "ALTER TABLE",
+            "points": 10
+          }
+        },
+        {
+          "examId": "sql-exam-1",
+          "questionId": "f3e729da-70ce-424a-b191-2c78be4b0cc6",
+          "question": {
+            "id": "f3e729da-70ce-424a-b191-2c78be4b0cc6",
+            "text": "What is the purpose of the GROUP BY clause in SQL?",
+            "type": "MCQ",
+            "skillId": "484d836f-c59f-4ef2-92c9-48bf995791dd",
+            "options": [
+              "To filter data based on a condition",
+              "To sort data in ascending or descending order",
+              "To group data based on one or more columns",
+              "To add a new column to an existing table"
+            ],
+            "correctAnswer": "To group data based on one or more columns",
+            "points": 10
+          }
+        },
+        {
+          "examId": "sql-exam-1",
+          "questionId": "88c1c703-1b3d-4529-a6c4-43577a58507d",
+          "question": {
+            "id": "88c1c703-1b3d-4529-a6c4-43577a58507d",
+            "text": "What is the difference between WHERE and HAVING clauses in SQL?",
+            "type": "MCQ",
+            "skillId": "484d836f-c59f-4ef2-92c9-48bf995791dd",
+            "options": [
+              "WHERE is used for filtering grouped data, while HAVING is used for filtering individual rows",
+              "WHERE is used for filtering individual rows, while HAVING is used for filtering grouped data",
+              "WHERE is used for sorting data, while HAVING is used for grouping data",
+              "WHERE is used for aggregating data, while HAVING is used for filtering data"
+            ],
+            "correctAnswer": "WHERE is used for filtering individual rows, while HAVING is used for filtering grouped data",
+            "points": 10
+          }
+        }
+      ],
+      "questionIds": [
+        "sql-q1",
+        "sql-q2",
+        "sql-q3",
+        "47d3174e-71a0-44ad-bf10-c5bcc2c68c07",
+        "0af9f987-c6b1-447a-a3d0-0d0fb7d4b440",
+        "8dd51bfb-6640-4552-97fe-a0d08972422e",
+        "7ca1a37f-136d-4a70-94f6-301f0e536243",
+        "38b51989-499e-471d-87dd-3694e80addc5",
+        "a5af9290-465f-4d60-84ab-14336de8c3b2",
+        "251111c0-8ad4-4f7c-8138-9e83ec5fa28a",
+        "11dd1c05-c519-4697-956a-257ef5c17470",
+        "f3e729da-70ce-424a-b191-2c78be4b0cc6",
+        "88c1c703-1b3d-4529-a6c4-43577a58507d"
+      ]
+    },
+    {
+      "id": "01259256-1b94-4314-a153-43cf3164474d",
+      "title": "JavaScript AI Challenge - 22/04/2026",
+      "description": "An AI-generated skill assessment for JavaScript created on 22/04/2026.",
+      "skillId": "2442717f-08f9-4391-a7ad-70f5b6237fc3",
+      "duration": 10,
+      "passingScore": 25,
+      "questions": [
+        {
+          "examId": "01259256-1b94-4314-a153-43cf3164474d",
+          "questionId": "6f322828-c649-46ae-b6ce-0dd669732a7a",
+          "question": {
+            "id": "6f322828-c649-46ae-b6ce-0dd669732a7a",
+            "text": "What is the purpose of the 'let' keyword in JavaScript?",
+            "type": "MCQ",
+            "skillId": "2442717f-08f9-4391-a7ad-70f5b6237fc3",
+            "options": [
+              "To declare a global variable",
+              "To declare a constant variable",
+              "To declare a block-scoped variable",
+              "To declare a function"
+            ],
+            "correctAnswer": "To declare a block-scoped variable",
+            "points": 10
+          }
+        },
+        {
+          "examId": "01259256-1b94-4314-a153-43cf3164474d",
+          "questionId": "8d662177-3b88-4e4a-9820-4a8f2088a79a",
+          "question": {
+            "id": "8d662177-3b88-4e4a-9820-4a8f2088a79a",
+            "text": "Which of the following is a JavaScript framework used for building user interfaces?",
+            "type": "MCQ",
+            "skillId": "2442717f-08f9-4391-a7ad-70f5b6237fc3",
+            "options": [
+              "React",
+              "Angular",
+              "Vue.js",
+              "All of the above"
+            ],
+            "correctAnswer": "All of the above",
+            "points": 10
+          }
+        },
+        {
+          "examId": "01259256-1b94-4314-a153-43cf3164474d",
+          "questionId": "223eb04c-0d4b-4cf6-89ab-fd158f86e212",
+          "question": {
+            "id": "223eb04c-0d4b-4cf6-89ab-fd158f86e212",
+            "text": "What is the difference between 'null' and 'undefined' in JavaScript?",
+            "type": "MCQ",
+            "skillId": "2442717f-08f9-4391-a7ad-70f5b6237fc3",
+            "options": [
+              "'null' represents an empty object, while 'undefined' represents an uninitialized variable",
+              "'null' represents an uninitialized variable, while 'undefined' represents an empty object",
+              "'null' represents a variable that has been explicitly set to nothing, while 'undefined' represents a variable that has not been declared",
+              "'null' and 'undefined' are the same thing"
+            ],
+            "correctAnswer": "'null' represents a variable that has been explicitly set to nothing, while 'undefined' represents a variable that has not been declared",
+            "points": 10
+          }
+        },
+        {
+          "examId": "01259256-1b94-4314-a153-43cf3164474d",
+          "questionId": "e3556fd1-54d1-4280-9c35-fb0ee23ab12c",
+          "question": {
+            "id": "e3556fd1-54d1-4280-9c35-fb0ee23ab12c",
+            "text": "Which of the following JavaScript methods is used to add an event listener to an element?",
+            "type": "MCQ",
+            "skillId": "2442717f-08f9-4391-a7ad-70f5b6237fc3",
+            "options": [
+              "addEventListener()",
+              "attachEvent()",
+              "addListener()",
+              "addEventHandler()"
+            ],
+            "correctAnswer": "addEventListener()",
+            "points": 10
+          }
+        },
+        {
+          "examId": "01259256-1b94-4314-a153-43cf3164474d",
+          "questionId": "bb6ffbce-7c1a-44bf-961d-752fe179cb9b",
+          "question": {
+            "id": "bb6ffbce-7c1a-44bf-961d-752fe179cb9b",
+            "text": "What is the purpose of the 'finally' block in a JavaScript try-catch statement?",
+            "type": "MCQ",
+            "skillId": "2442717f-08f9-4391-a7ad-70f5b6237fc3",
+            "options": [
+              "To catch and handle exceptions",
+              "To specify code that should run regardless of whether an exception was thrown",
+              "To specify code that should only run if an exception was thrown",
+              "To skip over code that might throw an exception"
+            ],
+            "correctAnswer": "To specify code that should run regardless of whether an exception was thrown",
+            "points": 10
+          }
+        }
+      ],
+      "questionIds": [
+        "6f322828-c649-46ae-b6ce-0dd669732a7a",
+        "8d662177-3b88-4e4a-9820-4a8f2088a79a",
+        "223eb04c-0d4b-4cf6-89ab-fd158f86e212",
+        "e3556fd1-54d1-4280-9c35-fb0ee23ab12c",
+        "bb6ffbce-7c1a-44bf-961d-752fe179cb9b"
+      ]
+    }
+  ]
+}

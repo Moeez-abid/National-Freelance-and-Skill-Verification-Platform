@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>National Freelance & Skill Verification Platform | NFASVP</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed-variant": "#264778",
+                    "primary-fixed-dim": "#a9c7ff",
+                    "on-tertiary-fixed-variant": "#005049",
+                    "inverse-surface": "#263143",
+                    "tertiary": "#001b18",
+                    "primary": "#001736",
+                    "on-secondary": "#ffffff",
+                    "secondary": "#515f74",
+                    "outline-variant": "#c4c6d0",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed-variant": "#3a485b",
+                    "on-primary-container": "#7594ca",
+                    "tertiary-fixed-dim": "#6bd8cb",
+                    "inverse-primary": "#a9c7ff",
+                    "secondary-container": "#d5e3fc",
+                    "on-surface-variant": "#43474f",
+                    "on-background": "#111c2d",
+                    "tertiary-container": "#00322d",
+                    "on-primary": "#ffffff",
+                    "surface": "#f9f9ff",
+                    "surface-dim": "#cfdaf2",
+                    "secondary-fixed": "#d5e3fc",
+                    "on-primary-fixed": "#001b3d",
+                    "surface-bright": "#f9f9ff",
+                    "surface-container-high": "#dee8ff",
+                    "on-error": "#ffffff",
+                    "primary-fixed": "#d6e3ff",
+                    "primary-container": "#002b5b",
+                    "on-tertiary": "#ffffff",
+                    "surface-variant": "#d8e3fb",
+                    "on-surface": "#111c2d",
+                    "background": "#f9f9ff",
+                    "surface-tint": "#405f91",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-on-surface": "#ecf1ff",
+                    "error": "#ba1a1a",
+                    "secondary-fixed-dim": "#b9c7df",
+                    "on-error-container": "#93000a",
+                    "tertiary-fixed": "#89f5e7",
+                    "surface-container": "#e7eeff",
+                    "surface-container-highest": "#d8e3fb",
+                    "surface-container-low": "#f0f3ff",
+                    "outline": "#747780",
+                    "on-secondary-container": "#57657a",
+                    "on-tertiary-container": "#2ca397",
+                    "on-secondary-fixed": "#0d1c2e",
+                    "on-tertiary-fixed": "#00201d"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4 { font-family: 'Manrope', sans-serif; }
+
+        /* ── Dark mode — mirrors Module 1's exact palette ────────────────────
+           surface dark:      #00132e  (Module 1: surface-dark)
+           container dark:    #001b3d  (Module 1: surface-container-dark)
+           card/panel dark:   #001f47
+           elevated dark:     #002554
+           text primary:      #e2e8f0  (slate-200)
+           text secondary:    #94a3b8  (slate-400)
+           border dark:       rgba(137,245,231,0.12)  (Module 1: border-dark)
+        ──────────────────────────────────────────────────────────────────── */
+        html.dark body {
+            background-color: #00132e;
+            color: #e2e8f0;
+        }
+
+        /* Backgrounds */
+        html.dark .bg-surface                   { background-color: #00132e !important; }
+        html.dark .bg-surface-container-lowest  { background-color: #001b3d !important; }
+        html.dark .bg-surface-container-low     { background-color: #001f47 !important; }
+        html.dark .bg-surface-container         { background-color: #001f47 !important; }
+        html.dark .bg-surface-container-high    { background-color: #002554 !important; }
+        html.dark .bg-surface-container-highest { background-color: #002b5b !important; }
+        html.dark .bg-white                     { background-color: #001b3d !important; }
+        html.dark .bg-slate-50                  { background-color: #001b3d !important; }
+        html.dark .bg-slate-100                 { background-color: #001f47 !important; }
+
+        /* Text */
+        html.dark .text-on-surface   { color: #e2e8f0 !important; }
+        html.dark .text-slate-900    { color: #e2e8f0 !important; }
+        html.dark .text-slate-800    { color: #cbd5e1 !important; }
+        html.dark .text-slate-700    { color: #94a3b8 !important; }
+        html.dark .text-slate-600    { color: #94a3b8 !important; }
+        html.dark .text-slate-500    { color: #64748b !important; }
+        html.dark .text-slate-400    { color: #475569 !important; }
+        html.dark .text-primary      { color: #89f5e7 !important; }
+
+        /* Borders */
+        html.dark .border-outline-variant\/10 { border-color: rgba(137,245,231,0.12) !important; }
+        html.dark .border-slate-100           { border-color: rgba(137,245,231,0.08) !important; }
+        html.dark .border-slate-200           { border-color: rgba(137,245,231,0.12) !important; }
+        html.dark .border-transparent         { border-color: transparent !important; }
+
+        /* Hover states */
+        html.dark .hover\:bg-\[\#dee8ff\]:hover      { background-color: rgba(137,245,231,0.08) !important; }
+        html.dark .hover\:bg-primary-fixed:hover     { background-color: rgba(137,245,231,0.08) !important; }
+        html.dark .hover\:border-primary-fixed-dim:hover { border-color: rgba(137,245,231,0.3) !important; }
+        html.dark .hover\:border-tertiary-fixed-dim:hover { border-color: rgba(137,245,231,0.3) !important; }
+        html.dark .hover\:shadow-md:hover            { box-shadow: 0 4px 20px rgba(0,0,0,0.5) !important; }
+
+        /* Cards / panels */
+        html.dark .shadow-sm  { box-shadow: 0 1px 3px rgba(0,0,0,0.4) !important; }
+        html.dark .shadow-md  { box-shadow: 0 4px 12px rgba(0,0,0,0.5) !important; }
+        html.dark .shadow-2xl { box-shadow: 0 25px 50px rgba(0,0,0,0.6) !important; }
+
+        /* Tertiary container (used for stats cards) */
+        html.dark .bg-tertiary-container { background-color: #003d36 !important; }
+    </style>
+  </head>
+  <body class="bg-surface text-on-surface">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

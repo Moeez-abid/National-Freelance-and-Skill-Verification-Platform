@@ -1,0 +1,65 @@
+services:
+
+  # ─── PostgreSQL Database ───
+  postgres:
+    image: postgres:16-alpine
+    container_name: module6_postgres
+    restart: unless-stopped
+    env_file:
+      - ./backend/.env 
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./sql:/docker-entrypoint-initdb.d
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ─── NestJS Backend ───
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: module6_backend
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: ${DATABASE_URL}
+      BASE_URL: ${BASE_URL}
+      ENCRYPTION_KEY: ${ENCRYPTION_KEY}
+      DAILY_API_KEY: ${DAILY_API_KEY}
+      DAILY_DOMAIN: ${DAILY_DOMAIN}
+    volumes:
+      - uploads_data:/app/uploads
+    ports:
+      - "3006:3006"
+
+  # ─── Vite / React Frontend ───
+  frontend:
+    build:
+      context: ./Frontend
+      dockerfile: Dockerfile
+      args:                      
+        VITE_BACKEND_URL: http://localhost:3006
+        VITE_SOCKET_URL: http://localhost:3006
+    container_name: module6_frontend
+    restart: unless-stopped
+    env_file:
+      - ./Frontend/.env
+    depends_on:
+      - backend
+    ports:
+      - "5006:5006"
+
+volumes:
+  postgres_data:
+  uploads_data:

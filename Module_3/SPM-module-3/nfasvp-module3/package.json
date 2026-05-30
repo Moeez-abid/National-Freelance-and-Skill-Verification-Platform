@@ -1,0 +1,16 @@
+{
+  "name": "nfasvp-module3",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "node scripts/dev.js",
+    "test": "npm.cmd test --prefix backend",
+    "test:coverage": "npm.cmd run test:coverage --prefix backend",
+    "build": "npm.cmd run build --prefix frontend",
+    "test:e2e": "playwright test",
+    "test:e2e:report": "playwright show-report playwright-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.60.0"
+  }
+}

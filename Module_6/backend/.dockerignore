@@ -1,0 +1,13 @@
+node_modules
+dist
+.env
+.env.*
+!.env.example
+uploads
+*.log
+coverage
+.git
+.gitignore
+README.md
+**/*.spec.ts
+**/*.spec.js

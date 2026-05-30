@@ -1,0 +1,202 @@
+version: '3.8'
+
+services:
+  # ==========================================
+  # THE SINGLE SHARED DATABASE
+  # ==========================================
+  postgres:
+    image: postgres:15-alpine
+    container_name: unified_app_db
+    restart: always
+    environment:
+      POSTGRES_DB: unified_app_db
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      # Master SQL files run on first boot
+      - ./init-db:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d unified_app_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # ==========================================
+  # MODULE 1 BACKEND (Raw PG)
+  # ==========================================
+  module1-backend:
+    build: ./Module_1/SPM-Project/Module1/backend
+    container_name: module1-backend
+    restart: always
+    ports:
+      - "5001:5001"
+    environment:
+      - PORT=5001
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_NAME=unified_app_db
+      - DB_USER=admin
+      - DB_PASSWORD=admin123
+      - JWT_SECRET=your_super_secret_jwt_key_here
+      - JWT_EXPIRES_IN=7d
+      - EMAIL_HOST=smtp.gmail.com
+      - EMAIL_PORT=587
+      - EMAIL_USER=spmprojectb@gmail.com
+      - EMAIL_PASS=rgul ahdh caze hizj
+    volumes:
+      - ./Module_1/SPM-Project/Module1/backend/uploads:/app/uploads
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  # ==========================================
+  # MODULE 1 FRONTEND (React)
+  # ==========================================
+  module1-frontend:
+    build: ./Module_1/SPM-Project/Module1/frontend
+    container_name: module1-frontend
+    restart: always
+    ports:
+      - "3000:80"
+    depends_on:
+      - module1-backend
+
+  # ==========================================
+  # MODULE 2 BACKEND (Prisma)
+  # ==========================================
+  module2-backend:
+    build: ./Module_2/Exam_conduction_module/server
+    container_name: module2-backend
+    restart: always
+    ports:
+      - "5002:5000"
+    environment:
+      - JWT_SECRET=your_super_secret_jwt_key_here
+      - JWT_EXPIRES_IN=7d
+      - DATABASE_URL=postgresql://admin:admin123@postgres:5432/unified_app_db?schema=public
+      - PORT=5000
+    env_file:
+      - ./Module_2/Exam_conduction_module/server/.env
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  # ==========================================
+  # MODULE 2 FRONTEND (Vite/React)
+  # ==========================================
+  module2-frontend:
+    build: ./Module_2/Exam_conduction_module/client
+    container_name: module2-frontend
+    restart: always
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_API_URL=http://localhost:5002
+    depends_on:
+      - module2-backend
+
+  # ==========================================
+  # MODULE 3 BACKEND (NFASVP)
+  # ==========================================
+  module3-backend:
+    build: ./Module_3/SPM-module-3/nfasvp-module3/backend
+    container_name: module3-backend
+    restart: always
+    ports:
+      - "4003:4003"
+    env_file:
+      - ./Module_3/SPM-module-3/nfasvp-module3/backend/.env
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_NAME=unified_app_db
+      - DB_USER=admin
+      - DB_PASSWORD=admin123
+      - MODULE1_JWT_SECRET=your_super_secret_jwt_key_here
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  # ==========================================
+  # MODULE 3 FRONTEND (NFASVP)
+  # ==========================================
+  module3-frontend:
+    build: ./Module_3/SPM-module-3/nfasvp-module3/frontend
+    container_name: module3-frontend
+    restart: always
+    ports:
+      - "5003:5003"
+    env_file:
+      - ./Module_3/SPM-module-3/nfasvp-module3/frontend/.env
+    environment:
+      - VITE_PROXY_TARGET=http://module3-backend:4003
+    depends_on:
+      - module3-backend
+
+  # ==========================================
+  # MODULE 4 BACKEND
+  # ==========================================
+  module4-backend:
+    build: ./Module_4  # <--- UPDATE THIS PATH to point to the folder containing Module 4's Dockerfile
+    container_name: module4-backend
+    restart: always
+    ports:
+      - "5004:5004"
+    environment:
+      # Overriding their DATABASE_URL to point to our unified postgres container
+      - DATABASE_URL=postgres://admin:admin123@postgres:5432/unified_app_db
+      - PORT=5004
+      - JWT_SECRET=your_super_secret_jwt_key_here
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  # ==========================================
+  # MODULE 6 BACKEND (Communication)
+  # ==========================================
+  module6-backend:
+    build: ./Module_6/backend
+    container_name: module6-backend
+    restart: always
+    ports:
+      - "3006:3006"
+    environment:
+      - DATABASE_URL=postgresql://admin:admin123@postgres:5432/unified_app_db
+      - BASE_URL=http://localhost:3006
+      - ENCRYPTION_KEY=26f3e0f236e771d3609c09642e651e66639c3d02288ea9692cddc10b3c0cdf7d
+      - DAILY_API_KEY=94c4545d9d279c4f57743ea7c1102fb61b899b20a7a6859aa387041c68a11d8e
+      - DAILY_DOMAIN=THAN
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_USER=admin
+      - DB_PASSWORD=admin123
+      - DB_NAME=unified_app_db
+      - FRONTEND_URL=http://localhost:5006
+    volumes:
+      - module6_uploads_data:/app/uploads
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  # ==========================================
+  # MODULE 6 FRONTEND (React)
+  # ==========================================
+  module6-frontend:
+    build: 
+      context: ./Module_6/Frontend
+      args:
+        - VITE_BACKEND_URL=http://localhost:3006
+        - VITE_SOCKET_URL=http://localhost:3006
+    container_name: module6-frontend
+    restart: always
+    ports:
+      - "5006:5006"
+    depends_on:
+      - module6-backend
+
+volumes:
+  postgres-data:
+  module6_uploads_data:

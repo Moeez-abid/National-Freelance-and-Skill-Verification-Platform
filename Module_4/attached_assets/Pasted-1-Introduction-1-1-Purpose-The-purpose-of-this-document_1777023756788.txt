@@ -1,0 +1,77 @@
+1. Introduction
+1.1 Purpose The purpose of this document is to define the requirements for Module 4 (Matching & Recommendation) of the National Freelance & Skill Verification Platform. This module serves as the core matchmaking engine connecting freelancers with relevant projects, and clients with relevant freelancers. Additionally, it serves as an advisory tool by recommending new, trending skills to users to improve their employability.
+1.2 Document Conventions Requirements are prioritized as High, Medium, or Low. All specific system features are labeled with "REQ-" for easy tracking by developers.
+1.3 Intended Audience and Reading Suggestions This document is intended for backend developers, database architects, and project managers. Developers should focus heavily on Section 3 (Interfaces) and Section 4 (System Features) to understand the data flow.
+1.4 Product Scope This MVP module compares freelancer "Skill Tags" and "Expected Rates" (from Module 1) against project "Required Stacks" and "Budgets" (from Module 3). It calculates a match percentage and ranks candidates and jobs accordingly. Furthermore, if an individual doesn’t have the required skills, the module recommends new trending skills for them to learn. Complex machine learning and generative AI are strictly out of scope for this version.
+1.5 References
+•	SRS Module 1: User Identity & Profile Management
+•	SRS Module 3: Project & Gig Marketplace
+
+2. Overall Description
+2.1 Product Perspective Module 4 operates as both a backend processor and a dedicated frontend view. It is accessible via the platform's global navigation bar from within Module 1 (for Freelancers) and Module 3 (for Clients). It actively reads data from both modules and renders the matching results on its own dedicated "Match & Recommendation" pages.
+2.2 Product Functions
+•	Extract and compare skill keywords.
+•	Compare freelancer rates against project budgets.
+•	Calculate an overall "Match Percentage."
+•	Route users missing specific skills to Module 2 for upskilling.
+•	Recommend new, trending skills based on overall market demand.
+2.3 User Classes and Characteristics
+•	Freelancers: Will interact with the matching engine by receiving personalized feeds of "Recommended Project Gigs." This feed is generated dynamically based on the specific "Skills" listed in their profile.
+•	Clients: Will interact with the matching engine by viewing a ranked list of "Top Matched Freelancers" based on the required skills they set when posting a project gig.
+2.4 Operating Environment The module will be developed using the MERN stack (MongoDB, Express.js, React.js, Node.js) and containerized using Docker for consistent deployment. As a backend service, Module 4 will execute within the Node.js/Express environment, querying the MongoDB NoSQL database to retrieve and match user and project records. It will be hosted on a cloud infrastructure (e.g., AWS or GCP) using container orchestration to ensure high availability.
+2.5 Design and Implementation Constraints
+•	Performance Constraint: The matching algorithm must be lightweight to ensure fast API response times. Data (skills and tags) must be stored in standardized arrays within MongoDB to allow for simple set-intersection logic.
+•	UI/UX Constraint: Module 4 will be rendered as a dedicated page component within the main React frontend application. It must seamlessly integrate with the global navigation bar used by Modules 1 and 3, maintaining a consistent design system and user experience across the platform.
+2.6 User Documentation Instead of a traditional user manual, user guidance for this module will be delivered via contextual in-app tooltips. Since the matching happens automatically in the background, the UI (via Modules 1 and 3) will provide brief, transparent explanations for its automated decisions (e.g., displaying a tag that says, "This project gig matches 3 of your verified skills" or "Learn this trending skill to match with more gigs!").
+2.7 Assumptions and Dependencies
+•	Assumption: Users and clients will accurately input their skills/requirements using a standardized list of tags.
+•	Dependency: Module 4 is entirely dependent on Module 1 and Module 3 providing clean, structured data arrays to function properly.
+
+3. External Interface Requirements
+3.1 User Interfaces Module 4 has dedicated UI pages accessible via the platform's navigation bar. The UI will display:
+•	For Freelancers: A "Recommended Jobs" page displaying a feed of matched projects, a "Match Score" badge on each project card, and a section suggesting "Trending Skills to Learn."
+•	For Clients: A "Top Matched Freelancers" page displaying a ranked list of candidates tailored to their specific job postings, complete with match percentage indicators.
+3.2 Hardware Interfaces None. Operates purely via cloud servers.
+3.3 Software Interfaces
+•	Module 1 API:
+The system shall interact with Module 1 to retrieve freelancer profile data, including user_id, skills_array, and hourly_rate. 
+This data will be used as input for the matching and recommendation process.
+•	Module 3 API:
+The system shall interact with Module 3 to retrieve project-related data, including project_id, required_skills_array, and max_budget. 
+This data will be used to compare freelancer profiles and generate match results.
+      • Module 2 API:
+The system shall send user_id and identified missing_skill_tags to Module 2 in order to retrieve relevant course or training recommendations. 
+Module 4 will consume the response and provide these recommendations to the frontend. 
+The frontend shall provide navigation (e.g., a “Learn Skill” action) that redirects the user to Module 2 for upskilling.
+3.4 Communications Interfaces Standard RESTful APIs endpoints will be used to transfer JSON data securely between the platform's microservices.
+
+4. System Features
+4.1 System Feature 1: Keyword/Skill Matching
+•	Description: The core logic comparing freelancer skills to project requirements. Priority: High.
+•	Functional Requirements:
+o	REQ-1: The system shall compare the user's skill array with the project's required skill array and calculate an overlap percentage.
+o	REQ-2: The system shall output a ranked list of freelancers for a specific project ID, sorted by highest overlap percentage.
+4.2 System Feature 2: Budget & Rate Alignment
+•	Description: Filtering matches to ensure financial compatibility. Priority: High.
+•	Functional Requirements:
+o	REQ-3: The system shall check the freelancer's stated hourly/project rate against the client's maximum budget.
+o	REQ-4: The system shall exclude or severely down-rank freelancers whose rates exceed the project budget by more than 10%.
+4.3 System Feature 3: Skill Gap Analysis & Upskilling Recommendations
+•	Description: Analyzing missing skills for specific project matches and scanning the overall marketplace to recommend high-demand skills to freelancers. Priority: High.
+•	Functional Requirements:
+o	REQ-5 (Specific Upskilling): If a freelancer matches >70% of a project's skills, the system shall identify the missing tags.
+o	REQ-6 (Specific Notification): The system shall push a notification to the user suggesting they learn the identified missing skill(s) via Module 2.
+o	REQ-7 (Market Trend Analysis): The system shall aggregate the most frequently requested "Required Skills" from Module 3 over a set period (e.g., 30 days).
+o	REQ-8 (Trending Display): The system shall display these top-ranking, high-demand skills on the freelancer's interface under a "Trending Skills" section.
+
+
+5. Other Nonfunctional Requirements
+5.1 Performance Requirements The matching algorithm must process and return a ranked list of users/jobs within 2 seconds of a query to ensure a smooth UI experience.
+5.2 Safety Requirements N/A for this specific backend module (handled at the system level).
+5.3 Security Requirements The module must only pull necessary data (skills, rates) and must not access sensitive PII (passwords, payment details) to perform the matching logic.
+5.4 Software Quality Attributes
+•	Scalability: Must handle thousands of concurrent matching queries as the user base grows.
+•	Modularity: Must be loosely coupled so the simple keyword matcher can be replaced by an advanced AI model in the future without breaking Modules 1 and 3.
+5.5 Business Rules
+•	A project must have at least one required skill tag to trigger the recommendation engine.
+•	A freelancer must have a completed profile (at least 1 skill tag and a set rate) to be included in the matchmaking pool.
